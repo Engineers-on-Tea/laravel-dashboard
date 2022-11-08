@@ -1,103 +1,131 @@
-<nav class="navbar header-navbar pcoded-header" header-theme="theme4">
+<nav class="navbar header-navbar pcoded-header">
     <div class="navbar-wrapper">
+
         <div class="navbar-logo">
             <a class="mobile-menu" id="mobile-collapse" href="#!">
-                <i class="ti-menu"></i>
+                <i class="feather icon-menu"></i>
             </a>
-            <a class="mobile-search morphsearch-search" href="#">
-                <i class="ti-search"></i>
-            </a>
-            <a href="index.html">
-                <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
+            <a href="index-1.htm">
+                <img class="img-fluid" src="{{ asset('admin_dashboard/assets/images/logo.png') }}" alt="Theme-Logo">
             </a>
             <a class="mobile-options">
-                <i class="ti-more"></i>
+                <i class="feather icon-more-horizontal"></i>
             </a>
         </div>
+
         <div class="navbar-container container-fluid">
-            <div>
-                <ul class="nav-left">
-                    <li>
-                        <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#!" onclick="javascript:toggleFullScreen()">
-                            <i class="ti-fullscreen"></i>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav-right">
-                    @php
-                        $currentLanguage = \App\Bll\Lang::getAdminLang();
-                    @endphp
-                    <li class="header-notification lng-dropdown">
-                        <a href="#" id="dropdown-active-item">
-                            <i class="flag-icon {{ $currentLanguage->__get('flag') }} m-r-5"></i> {{ $currentLanguage->__get('title') }}
-                        </a>
-                        <ul class="show-notification">
-                            @foreach (\App\Bll\Lang::getAll() as $language)
-                                <li>
-                                    <a href="{{ route('dashboard.change.lang', $language->__get('id')) }}"
-                                        data-lng="{{ $language->__get('code') }}">
-                                        <i class="flag-icon {{ $language->__get('flag') }} m-r-5"></i>
-                                        {{ $language->__get('title') }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                </ul>
-                <!-- search -->
-                {{-- <div id="morphsearch" class="morphsearch">
-                    <form class="morphsearch-form">
-                        <input class="morphsearch-input" type="search" placeholder="Search..." />
-                        <button class="morphsearch-submit" type="submit">Search</button>
-                    </form>
-                    <div class="morphsearch-content">
-                        <div class="dummy-column">
-                            <h2>People</h2>
-                            <a class="dummy-media-object" href="#!">
-                                <img class="round"
-                                    src="http://0.gravatar.com/avatar/81b58502541f9445253f30497e53c280?s=50&d=identicon&r=G"
-                                    alt="Sara Soueidan" />
-                                <h3>Sara Soueidan</h3>
-                            </a>
-                            <a class="dummy-media-object" href="#!">
-                                <img class="round"
-                                    src="http://1.gravatar.com/avatar/9bc7250110c667cd35c0826059b81b75?s=50&d=identicon&r=G"
-                                    alt="Shaun Dona" />
-                                <h3>Shaun Dona</h3>
-                            </a>
-                        </div>
-                        <div class="dummy-column">
-                            <h2>Popular</h2>
-                            <a class="dummy-media-object" href="#!">
-                                <img src="assets/images/avatar-1.png" alt="PagePreloadingEffect" />
-                                <h3>Page Preloading Effect</h3>
-                            </a>
-                            <a class="dummy-media-object" href="#!">
-                                <img src="assets/images/avatar-1.png" alt="DraggableDualViewSlideshow" />
-                                <h3>Draggable Dual-View Slideshow</h3>
-                            </a>
-                        </div>
-                        <div class="dummy-column">
-                            <h2>Recent</h2>
-                            <a class="dummy-media-object" href="#!">
-                                <img src="assets/images/avatar-1.png" alt="TooltipStylesInspiration" />
-                                <h3>Tooltip Styles Inspiration</h3>
-                            </a>
-                            <a class="dummy-media-object" href="#!">
-                                <img src="assets/images/avatar-1.png" alt="NotificationStyles" />
-                                <h3>Notification Styles Inspiration</h3>
-                            </a>
+            <ul class="nav-left">
+                <li class="header-search">
+                    <div class="main-search morphsearch-search">
+                        <div class="input-group">
+                            <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
+                            <input type="text" class="form-control">
+                            <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
                         </div>
                     </div>
-                    <!-- /morphsearch-content -->
-                    <span class="morphsearch-close"><i class="icofont icofont-search-alt-1"></i></span>
-                </div> --}}
-                <!-- search end -->
-            </div>
+                </li>
+                <li>
+                    <a href="#!" onclick="javascript:toggleFullScreen()">
+                        <i class="feather icon-maximize full-screen"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav-right">
+                <li class="header-notification">
+                    <div class="dropdown-primary dropdown">
+                        <div class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-bell"></i>
+                            <span class="badge bg-c-pink">5</span>
+                        </div>
+                        <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn"
+                            data-dropdown-out="fadeOut">
+                            <li>
+                                <h6>Notifications</h6>
+                                <label class="label label-danger">New</label>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="d-flex align-self-center img-radius"
+                                        src="..\files\assets\images\avatar-4.jpg" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="notification-user">John Doe</h5>
+                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                        <span class="notification-time">30 minutes ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="d-flex align-self-center img-radius"
+                                        src="..\files\assets\images\avatar-3.jpg" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="notification-user">Joseph William</h5>
+                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                        <span class="notification-time">30 minutes ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="d-flex align-self-center img-radius"
+                                        src="..\files\assets\images\avatar-4.jpg" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="notification-user">Sara Soudein</h5>
+                                        <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                        <span class="notification-time">30 minutes ago</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="header-notification">
+                    <div class="dropdown-primary dropdown">
+                        <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-message-square"></i>
+                            <span class="badge bg-c-green">3</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="user-profile header-notification">
+                    <div class="dropdown-primary dropdown">
+                        <div class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ asset('admin_dashboard/assets/images/avatar-4.jpg') }}" class="img-radius" alt="User-Profile-Image">
+                            <span>John Doe</span>
+                            <i class="feather icon-chevron-down"></i>
+                        </div>
+                        <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn"
+                            data-dropdown-out="fadeOut">
+                            <li>
+                                <a href="#!">
+                                    <i class="feather icon-settings"></i> Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="user-profile.htm">
+                                    <i class="feather icon-user"></i> Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="email-inbox.htm">
+                                    <i class="feather icon-mail"></i> My Messages
+                                </a>
+                            </li>
+                            <li>
+                                <a href="auth-lock-screen.htm">
+                                    <i class="feather icon-lock"></i> Lock Screen
+                                </a>
+                            </li>
+                            <li>
+                                <a href="auth-normal-sign-in.htm">
+                                    <i class="feather icon-log-out"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

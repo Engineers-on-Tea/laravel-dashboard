@@ -2,7 +2,7 @@
 
 namespace App\Bll;
 
-use App\Models\Language;
+use App\Modules\Admin\Models\Language;
 
 class Lang
 {

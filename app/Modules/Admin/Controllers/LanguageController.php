@@ -2,56 +2,22 @@
 
 namespace App\Modules\Admin\Controllers;
 
-use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Modules\Admin\Controllers\DashboardController;
 
 class LanguageController extends DashboardController
 {
+    protected $config;
+
     public function __construct()
     {
-        $this->columns = [
-            'id' => [
-                'label' => _i('ID'),
-                'type' => 'text',
-                'searchable' => true,
-                'sortable' => true,
-                'editable' => false,
-                'model' => 'base',
-            ],
-            'title' => [
-                'label' => _i('Title'),
-                'type' => 'text',
-                'searchable' => true,
-                'sortable' => true,
-                'editable' => true,
-                'model' => 'base',
-            ],
-            'code' => [
-                'label' => _i('Code'),
-                'type' => 'text',
-                'searchable' => true,
-                'sortable' => true,
-                'editable' => true,
-                'model' => 'base',
-            ],
-            'is_default' => [
-                'label' => _i('Default'),
-                'type' => 'text',
-                'searchable' => true,
-                'sortable' => true,
-                'editable' => true,
-                'model' => 'base',
-            ],
-            'created_at' => [
-                'label' => _i('Created At'),
-                'type' => 'text',
-                'searchable' => true,
-                'sortable' => true,
-                'editable' => false,
-            ],
-        ];
-        $this->model = Language::query();
+        $this->config = require_once(app_path('Modules/Admin/config/LanguageConfig.php'));
+        $this->model = $this->config['baseModel'];
+        $this->columns = $this->config['columns'];
+
+        $this->allow_edit = $this->config['allow_edit'];
+        $this->route = $this->config['route'];
+        
         parent::__construct();
     }
 

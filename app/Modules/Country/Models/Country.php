@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Modules\Admin\Models\Country;
+namespace App\Modules\Country\Models;
 
 use App\Bll\Lang;
 use Illuminate\Database\Eloquent\Model;
-use App\Modules\Admin\Models\Country\CountryData;
+use App\Modules\Country\Models\CountryData;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Country extends Model
 {
@@ -36,5 +36,10 @@ class Country extends Model
     {
         return $this->hasOne(CountryData::class, 'master_id', 'id')
             ->where('lang_id', Lang::getLangId());
+    }
+
+    public function getStatusAttribute($value)
+    {
+        return $value == 1 ? _i('Active') : _i('Not Active');
     }
 }

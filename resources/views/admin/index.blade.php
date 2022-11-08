@@ -2,44 +2,26 @@
 
 @section('title', $pageTitle)
 
-@section('content')
+@section('contents')
     <div class="page-body">
         <div class="row">
             <div class="col-sm-12">
+                <!-- Zero config.table start -->
                 <div class="card">
                     <div class="card-header">
                         <h5>{{ $pageTitle }}</h5>
-                        <div class="card-header-right">
-                            <i class="icofont icofont-rounded-down"></i>
-                            <i class="icofont icofont-refresh"></i>
-                            <i class="icofont icofont-close-circled"></i>
-                        </div>
+                        @if ($allowEdit)
+                            <a href="{{ route('dashboard.' . $route . '.create') }}" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger">
+                                <i class="fa fa-plus m-r-5"></i> {{ _I('Create new') }}
+                            </a>
+                        @endif
                     </div>
                     <div class="card-block">
-                        <div class="dt-responsive table-responsive">
-                            <table id="simpletable" class="table table-striped table-bordered nowrap">
-                                <thead>
-                                    <tr>
-                                        @foreach ($columns as $key => $column)
-                                            <th>{{ $column['label'] }}</th>
-                                        @endforeach
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($content as $element)
-                                        <tr>
-                                            @foreach ($columns as $key => $column)
-                                                <td>{{ $element[$key] }}</td>
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        @include('admin.includes.table')
+                        {{ $content->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

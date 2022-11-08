@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Admin\Models\Country;
+namespace App\Modules\Country\Models;
 
 use App\Models\Language;
+use App\Modules\Country\Models\Country;
 use Illuminate\Database\Eloquent\Model;
-use App\Modules\Admin\Models\Country\Country;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CountryData extends Model

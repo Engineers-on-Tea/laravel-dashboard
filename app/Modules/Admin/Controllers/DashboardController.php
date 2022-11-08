@@ -3,23 +3,24 @@
 namespace App\Modules\Admin\Controllers;
 
 use App\Bll\Lang;
-use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Xinax\LaravelGettext\Facades\LaravelGettext;
+use App\Modules\Admin\Models\Language;
 
 class DashboardController extends Controller
 {
     protected $columns = [];
-
     protected $model = null;
     protected $dataModel = null;
+
+    protected $allow_edit;
+    protected $route;
 
     public function __construct()
     {
     }
 
-    protected function home(Request $request)
+    protected function home()
     {
         return view('admin.home');
     }
@@ -52,6 +53,8 @@ class DashboardController extends Controller
             'content' => $content,
             'columns' => $columns,
             'pageTitle' => $pageTitle,
+            'allowEdit' => $this->allow_edit,
+            'route' => $this->route,
         ];
 
         if ($request->ajax()) {
@@ -63,6 +66,12 @@ class DashboardController extends Controller
 
     protected function create(Request $request)
     {
+        $data = [
+            'pageTitle' => _i('Create'),
+            'route' => $this->route,
+        ];
+
+        return view('admin.create', $data);
     }
 
     protected function store(Request $request)
