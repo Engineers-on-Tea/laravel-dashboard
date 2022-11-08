@@ -36,8 +36,29 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    protected function index(Request $request)
+    protected function index(Request $request, $pageTitle = null)
     {
+        $content = $this->model;
+
+        if ($this->dataModel != null) {
+            $content = $content->with(['AdminTranslated']);
+        }
+
+        $content = $content->paginate(10);
+
+        $columns = $this->columns;
+
+        $data = [
+            'content' => $content,
+            'columns' => $columns,
+            'pageTitle' => $pageTitle,
+        ];
+
+        if ($request->ajax()) {
+            return view('admin.partials.table', $data);
+        } else {
+            return view('admin.index', $data);
+        }
     }
 
     protected function create(Request $request)

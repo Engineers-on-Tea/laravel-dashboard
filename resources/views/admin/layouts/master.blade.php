@@ -2,7 +2,7 @@
 <html lang="{{ \App\Bll\Lang::getAdminLangCode() }}" dir="{{ \App\Bll\Lang::getAdminLangDir() }}">
 
 <head>
-    <title>{{ _i('Dashboard') }}</title>
+    <title>@yield('title')</title>
     <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,6 +40,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/ionicons.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.mCustomScrollbar.css') }}">
 
+    @stack('css')
+    @stack('style')
+
 </head>
 
 <body class="dark-layout">
@@ -64,6 +67,10 @@
         </div>
     </div>
     @include('admin.layouts.footer')
+    @stack('scripts')
+    @stack('js')
+    @stack('javascript')
+    @stack('script')
 </body>
 
 </html>

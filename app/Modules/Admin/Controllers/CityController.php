@@ -15,9 +15,11 @@ class CityController extends DashboardController
         parent::__construct();
     }
 
-    protected function index(Request $request)
+    protected function index(Request $request, $pageTitle = null)
     {
-        return parent::index($request);
+        $pageTitle = _i('Cities');
+
+        return parent::index($request, $pageTitle);
     }
 
     protected function create(Request $request)

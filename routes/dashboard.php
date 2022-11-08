@@ -1,7 +1,9 @@
 <?php
 
-use App\Modules\Admin\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Modules\Admin\Controllers\CountryController;
+use App\Modules\Admin\Controllers\LanguageController;
+use App\Modules\Admin\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +24,8 @@ Route::name('dashboard.')
 
         Route::get('/change-language/{language}', [DashboardController::class, 'changeLanguage'])
             ->name('change.lang');
+
+        Route::resource('country', CountryController::class);
+
+        Route::resource('language', LanguageController::class);
     });

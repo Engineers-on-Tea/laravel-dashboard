@@ -2,17 +2,15 @@
 
 namespace App\Modules\Admin\Controllers;
 
+use App\Models\Language;
 use Illuminate\Http\Request;
-use App\Modules\Admin\Models\Country\Country;
 use App\Modules\Admin\Controllers\DashboardController;
 
-class CountryController extends DashboardController
+class LanguageController extends DashboardController
 {
     public function __construct()
     {
-        parent::$model = Country::query();
-        parent::$dataModel = Country::query();
-        parent::$columns = [
+        $this->columns = [
             'id' => [
                 'label' => _i('ID'),
                 'type' => 'text',
@@ -27,7 +25,7 @@ class CountryController extends DashboardController
                 'searchable' => true,
                 'sortable' => true,
                 'editable' => true,
-                'model' => 'data',
+                'model' => 'base',
             ],
             'code' => [
                 'label' => _i('Code'),
@@ -37,16 +35,8 @@ class CountryController extends DashboardController
                 'editable' => true,
                 'model' => 'base',
             ],
-            'dialing_code' => [
-                'label' => _i('Phone Code'),
-                'type' => 'text',
-                'searchable' => true,
-                'sortable' => true,
-                'editable' => true,
-                'model' => 'base',
-            ],
-            'status' => [
-                'label' => _i('Status'),
+            'is_default' => [
+                'label' => _i('Default'),
                 'type' => 'text',
                 'searchable' => true,
                 'sortable' => true,
@@ -61,18 +51,18 @@ class CountryController extends DashboardController
                 'editable' => false,
             ],
         ];
+        $this->model = Language::query();
         parent::__construct();
     }
 
     protected function index(Request $request, $pageTitle = null)
     {
-        $pageTitle = _i('Countries');
+        $pageTitle = _i('Languages');
         return parent::index($request, $pageTitle);
     }
 
     protected function create(Request $request)
     {
-        return parent::create($request);
     }
 
     protected function store(Request $request)
@@ -81,12 +71,10 @@ class CountryController extends DashboardController
 
     protected function show(Request $request)
     {
-        return parent::show($request);
     }
 
     protected function edit(Request $request)
     {
-        return parent::edit($request);
     }
 
     protected function update(Request $request)
@@ -95,26 +83,21 @@ class CountryController extends DashboardController
 
     protected function destroy(Request $request)
     {
-        return parent::destroy($request);
     }
 
     protected function restore(Request $request)
     {
-        return parent::restore($request);
     }
 
     protected function forceDelete(Request $request)
     {
-        return parent::forceDelete($request);
     }
 
     protected function getTranslation(Request $request)
     {
-        return parent::getTranslation($request);
     }
 
     protected function setTranslation(Request $request)
     {
-        return parent::setTranslation($request);
     }
 }

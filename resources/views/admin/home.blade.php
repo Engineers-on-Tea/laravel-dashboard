@@ -1,5 +1,8 @@
 @extends('admin.layouts.master')
 {{-- @dd(\App\Bll\Lang::getAdminLang()) --}}
+@section('title', _i('Dashboard'))
+
+{{-- TODO: Convert Home Page Into Partials --}}
 @section('content')
     <div class="pcoded-content">
         <div class="pcoded-inner-content">
