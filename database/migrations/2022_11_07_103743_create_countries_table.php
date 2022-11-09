@@ -18,8 +18,8 @@ class CreateCountriesTable extends Migration
             $table->string('code')->nullable(false);
             $table->string('dialing_code')->nullable(false);
             $table->boolean('status')->nullable(false)->default(true);
-            $table->float('lat')->nullable();
-            $table->float('lng')->nullable();
+            $table->float('lat', 10, 6)->nullable();
+            $table->float('lng', 10, 6)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

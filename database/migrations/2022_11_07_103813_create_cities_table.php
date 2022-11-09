@@ -16,8 +16,8 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('country_id')->nullable(false);
-            $table->float('lat')->nullable();
-            $table->float('lng')->nullable();
+            $table->float('lat', 10, 6)->nullable();
+            $table->float('lng', 10, 6)->nullable();
             $table->boolean('status')->nullable(false)->default(true);
             $table->timestamps();
             $table->softDeletes();
