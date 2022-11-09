@@ -10,11 +10,16 @@ use App\Modules\Admin\Models\Language;
 class DashboardController extends Controller
 {
     protected $columns = [];
+
     protected $model = null;
     protected $dataModel = null;
+    protected $parentModel = null;
+    protected $parentDataModel = null;
 
     protected $allow_edit;
     protected $route;
+
+    protected $config;
 
     public function __construct()
     {
@@ -22,7 +27,10 @@ class DashboardController extends Controller
 
     protected function home()
     {
-        return view('admin.home');
+        $pageTitle = '';
+        return view('admin.home', [
+            'pageTitle' => $pageTitle,
+        ]);
     }
 
     protected function changeLanguage($language)
@@ -37,9 +45,11 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    protected function index(Request $request, $pageTitle = null)
+    protected function index(Request $request)
     {
         $content = $this->model;
+
+        $pageTitle = $this->config['title'];
 
         if ($this->dataModel != null) {
             $content = $content->with(['AdminTranslated']);
@@ -58,7 +68,7 @@ class DashboardController extends Controller
         ];
 
         if ($request->ajax()) {
-            return view('admin.partials.table', $data);
+            return view('admin.includes.table', $data);
         } else {
             return view('admin.index', $data);
         }
@@ -67,8 +77,14 @@ class DashboardController extends Controller
     protected function create(Request $request)
     {
         $data = [
-            'pageTitle' => _i('Create'),
+            'pageTitle' => $this->config['createTitle'],
             'route' => $this->route,
+            'method' => 'POST',
+            'action' => 'store',
+            'item' => null,
+            'baseRoute' => $this->config['base_route'],
+            'baseTitle' => $this->config['title'],
+            'form' => $this->config['form']
         ];
 
         return view('admin.create', $data);
@@ -79,23 +95,33 @@ class DashboardController extends Controller
         // filter column names from colums having model base
         $baseColums = [];
         foreach ($this->columns as $key => $column) {
-            if (isset($column['model']) && $column['model'] == 'base') {
+            if (isset($column['model']) && $column['model'] == 'base' && $column['editable'] == true) {
                 $baseColums[$key] = $column;
             }
         }
+        $baseColums = array_keys($baseColums);
         $newBase = $this->model->create($request->only($baseColums));
 
         // get column names from colums having model data
-        $dataColums = ['master_id' => $newBase->id];
+        $dataColums = [];
         foreach ($this->columns as $key => $column) {
-            if ($column['model'] == 'data') {
+            if ($column['model'] == 'data' && $column['editable'] == true) {
                 $dataColums[] = $key;
             }
         }
+        // append master id to request
+        $request->merge(['master_id' => $newBase->id, 'lang_id' => Lang::getAdminLangId()]);
+        array_push($dataColums, 'master_id');
+        array_push($dataColums, 'lang_id');
 
         $newData = $this->dataModel->create($request->only($dataColums));
 
-        return redirect()->back()->with('success', _i('New record created successfully'));
+        $response = [
+            'title' => _i('Success'),
+            'message' => _i('New record created successfully'),
+        ];
+
+        return response()->json($response, 200);
     }
 
     protected function show(Request $request)
@@ -105,8 +131,24 @@ class DashboardController extends Controller
         ])->findOrFail($request->input('id'));
     }
 
-    protected function edit(Request $request)
+    protected function edit($id)
     {
+        $item = $this->model->with([
+            'AdminTranslated'
+        ])->findOrFail($id);
+
+        $data = [
+            'pageTitle' => $this->config['editTitle'],
+            'route' => $this->route,
+            'method' => 'PUT',
+            'action' => 'update',
+            'item' => $item,
+            'baseRoute' => $this->config['base_route'],
+            'baseTitle' => $this->config['title'],
+            'form' => $this->config['form']
+        ];
+
+        return view('admin.edit', $data);
     }
 
     protected function update(Request $request)
@@ -120,6 +162,7 @@ class DashboardController extends Controller
                 $baseColums[$key] = $column;
             }
         }
+        $baseColums = array_keys($baseColums);
         $item->update($request->only($baseColums));
 
         // get column names from colums having model data
@@ -134,27 +177,34 @@ class DashboardController extends Controller
             'lang_id' => Lang::getAdminLangId()
         ])->update($request->only($dataColums));
 
-        return redirect()->back()->with('success', _i('Record updated successfully'));
+        $response = [
+            'title' => _i('Success'),
+            'message' => _i('Record updated successfully'),
+        ];
+
+        return response()->json($response, 200);
     }
 
-    protected function destroy(Request $request)
+    protected function destroy($id)
     {
         $statusCode = 200;
         $response = [
+            'title' => _i('Success'),
             'message' => _i('Deleted Successfully'),
             'fail' => false,
         ];
         try {
-            $this->model->where('id', $request->get('id'))->delete();
+            $this->model->where('id', $id)->delete();
         } catch (\Exception $e) {
             $statusCode = 500;
             $response = [
+                'title' => _i('Error'),
                 'message' => _i('Error Deleting'),
                 'fail' => true,
             ];
         }
 
-        return response()->json($response, $statusCode);
+        return response()->json(['data' => $response], $statusCode);
     }
 
     protected function restore(Request $request)
