@@ -2,9 +2,14 @@
 
 return [
     'allow_edit' => true,
+    'base_route' => route('dashboard.country.index'),
     'route' => 'country',
     'baseModel' => \App\Modules\Country\Models\Country::query(),
     'dataModel' => \App\Modules\Country\Models\CountryData::query(),
+    'form' => 'admin.components.country.form',
+    'title' => _i('Countries'),
+    'createTitle' => _i('Create Country'),
+    'editTitle' => _i('Edit Country'),
     'columns' => [
         'id' => [
             'label' => _i('ID'),
@@ -70,5 +75,17 @@ return [
             'editable' => false,
             'model' => 'base',
         ],
-    ]
+        'action' => [
+            'label' => _i('Action'),
+            'type' => 'action',
+            'searchable' => false,
+            'sortable' => false,
+            'editable' => false,
+            'model' => 'action',
+            'data' => [
+                'edit' => 'admin.components.buttons.edit',
+                'delete' => 'admin.components.buttons.delete',
+            ],
+        ],
+    ],
 ];

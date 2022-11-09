@@ -3,12 +3,11 @@
 namespace App\Modules\Country\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
 use App\Modules\Admin\Controllers\DashboardController;
+use Illuminate\Support\Facades\Validator;
 
 class CountryController extends DashboardController
 {
-    protected $config;
     public function __construct()
     {
         $this->config = require_once(app_path('Modules/Country/config/CountryConfig.php'));
@@ -23,10 +22,10 @@ class CountryController extends DashboardController
         parent::__construct();
     }
 
-    protected function index(Request $request, $pageTitle = null)
+    protected function index(Request $request)
     {
         $pageTitle = _i('Countries');
-        return parent::index($request, $pageTitle);
+        return parent::index($request);
     }
 
     protected function create(Request $request)
@@ -36,14 +35,31 @@ class CountryController extends DashboardController
 
     protected function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255|min:3',
-            'code' => 'required|string|max:10|min:2',
-            'dialing_code' => 'required|string|max:10|min:2',
-            'lat' => 'float',
-            'lng' => 'float',
+            'code' => 'required|string|max:10|min:2|unique:countries,code',
+            'dialing_code' => 'required|string|max:10|min:2|unique:countries,dialing_code',
             'lang_id' => 'required|integer',
+        ], [
+            'title.required' => _i('Title is required'),
+            'code.required' => _i('Code is required'),
+            'code.unique' => _i('Code is already exists'),
+            'dialing_code.required' => _i('Dialing code is required'),
+            'dialing_code.unique' => _i('Dialing code is already exists'),
         ]);
+
+        if ($validator->fails()) {
+            $errors = '';
+            foreach ($validator->errors()->all() as $error) {
+                $errors .= $error . ', ';
+            }
+            $response = [
+                'title' => _i('Error'),
+                'message' => $errors,
+            ];
+
+            return response()->json($response, 422);
+        }
 
         return parent::store($request);
     }
@@ -53,9 +69,9 @@ class CountryController extends DashboardController
         return parent::show($request);
     }
 
-    protected function edit(Request $request)
+    protected function edit($id)
     {
-        return parent::edit($request);
+        return parent::edit($id);
     }
 
     protected function update(Request $request)
@@ -63,18 +79,16 @@ class CountryController extends DashboardController
         $request->validate([
             'title' => 'required|string|max:255|min:3',
             'code' => 'required|string|max:10|min:2',
-            'dialing_code' => 'required|string|max:10|min:2',
-            'lat' => 'float',
-            'lng' => 'float',
+            'dialing_code' => 'required|string|max:10',
             'lang_id' => 'required|integer',
         ]);
 
         return parent::update($request);
     }
 
-    protected function destroy(Request $request)
+    protected function destroy($id)
     {
-        return parent::destroy($request);
+        return parent::destroy($id);
     }
 
     protected function restore(Request $request)

@@ -6,10 +6,12 @@ use App\Models\Language;
 use App\Modules\Country\Models\Country;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CountryData extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'country_data';
 
