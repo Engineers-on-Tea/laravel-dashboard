@@ -17,7 +17,7 @@ class LanguageController extends DashboardController
 
         $this->allow_edit = $this->config['allow_edit'];
         $this->route = $this->config['route'];
-        
+
         parent::__construct();
     }
 
@@ -25,45 +25,5 @@ class LanguageController extends DashboardController
     {
         $pageTitle = _i('Languages');
         return parent::index($request, $pageTitle);
-    }
-
-    protected function create(Request $request)
-    {
-    }
-
-    protected function store(Request $request)
-    {
-    }
-
-    protected function show(Request $request)
-    {
-    }
-
-    protected function edit(Request $request)
-    {
-    }
-
-    protected function update(Request $request)
-    {
-    }
-
-    protected function destroy(Request $request)
-    {
-    }
-
-    protected function restore(Request $request)
-    {
-    }
-
-    protected function forceDelete(Request $request)
-    {
-    }
-
-    protected function getTranslation(Request $request)
-    {
-    }
-
-    protected function setTranslation(Request $request)
-    {
     }
 }
