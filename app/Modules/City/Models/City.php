@@ -48,7 +48,7 @@ class City extends BaseModel
             ->where('lang_id', Lang::getLang());
     }
 
-    public function getStatusAttribute($value)
+    public function getStatusAttribute($value): string
     {
         return $value == 1 ? _i('Active') : _i('Not Active');
     }
