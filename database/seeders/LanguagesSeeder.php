@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Language;
 use Illuminate\Database\Seeder;
+use App\Modules\Admin\Models\Language;
 
 class LanguagesSeeder extends Seeder
 {

@@ -9,11 +9,13 @@ class BaseModel extends Model
 {
     public function getCreatedAtAttribute($value)
     {
-        return Carbon::parse($value)->format('Y-m-d g:i A');
+        return Carbon::parse($value)
+            ->format('Y-m-d g:i A');
     }
 
     public function getUpdatedAtAttribute($value)
     {
-        return Carbon::parse($value)->format('Y-m-d g:i A');
+        return Carbon::parse($value)
+            ->format('Y-m-d g:i A');
     }
 }
