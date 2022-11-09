@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Modules\Country\Controllers\CountryController;
 use App\Modules\Admin\Controllers\LanguageController;
 use App\Modules\Admin\Controllers\DashboardController;
+use App\Modules\City\Controllers\CityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::name('dashboard.')
             ->name('change.lang');
 
         Route::resource('country', CountryController::class)
+            ->except(['show']);
+
+        Route::resource('city', CityController::class)
             ->except(['show']);
 
         Route::resource('language', LanguageController::class)

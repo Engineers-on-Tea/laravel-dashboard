@@ -55,6 +55,10 @@ class DashboardController extends Controller
             $content = $content->with(['AdminTranslated']);
         }
 
+        if ($this->parentModel != null) {
+            $content = $content->with(['Parent.AdminTranslated']);
+        }
+
         $content = $content->paginate(10);
 
         $columns = $this->columns;
@@ -95,7 +99,7 @@ class DashboardController extends Controller
         // filter column names from colums having model base
         $baseColums = [];
         foreach ($this->columns as $key => $column) {
-            if (isset($column['model']) && $column['model'] == 'base' && $column['editable'] == true) {
+            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable'] == true) {
                 $baseColums[$key] = $column;
             }
         }
@@ -158,7 +162,7 @@ class DashboardController extends Controller
         // filter column names from colums having model base
         $baseColums = [];
         foreach ($this->columns as $key => $column) {
-            if (isset($column['model']) && $column['model'] == 'base') {
+            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData')) {
                 $baseColums[$key] = $column;
             }
         }

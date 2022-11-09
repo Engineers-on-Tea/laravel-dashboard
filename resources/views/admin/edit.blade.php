@@ -15,3 +15,5 @@
         </div>
     </div>
 @endsection
+
+@include('admin.includes.data-form-scripts')

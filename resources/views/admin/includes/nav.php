@@ -24,6 +24,12 @@ return [
                 'route' => route('dashboard.country.index'),
                 'children' => [],
             ],
+            'city' => [
+                'label' => _i('Cities'),
+                'icon' => 'icon-flag',
+                'route' => route('dashboard.city.index'),
+                'children' => [],
+            ],
         ]
     ]
 ];

@@ -15,6 +15,8 @@
                             <td>{{ $row->__get($key) }}</td>
                         @elseif ($column['model'] == 'data')
                             <td>{{ $row->AdminTranslated->__get($key) }}</td>
+                        @elseif ($column['model'] == 'parentData')
+                            <td>{{ $row->Parent->AdminTranslated->__get('title') }}</td>
                         @elseif($column['model'] == 'action')
                             <td>
                                 @foreach ($column['data'] as $button)

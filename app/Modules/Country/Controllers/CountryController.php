@@ -24,7 +24,6 @@ class CountryController extends DashboardController
 
     protected function index(Request $request)
     {
-        $pageTitle = _i('Countries');
         return parent::index($request);
     }
 

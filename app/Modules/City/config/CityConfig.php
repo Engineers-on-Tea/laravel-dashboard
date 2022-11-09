@@ -1,15 +1,17 @@
 <?php
 
 return [
-    'baseModel' => \App\Modules\Country\Models\Country::query(),
-    'dataModel' => \App\Modules\Country\Models\CountryData::query(),
+    'baseModel' => \App\Modules\City\Models\City::query(),
+    'dataModel' => \App\Modules\City\Models\CityData::query(),
+    'parentModel' => \App\Modules\Country\Models\Country::query(),
+    'parentDataModel' => \App\Modules\Country\Models\CountryData::query(),
     'allow_edit' => true,
-    'base_route' => route('dashboard.country.index'),
-    'route' => 'country',
-    'form' => 'admin.components.country.form',
-    'title' => _i('Countries'),
-    'createTitle' => _i('Create Country'),
-    'editTitle' => _i('Edit Country'),
+    'base_route' => route('dashboard.city.index'),
+    'route' => 'city',
+    'form' => 'admin.components.city.form',
+    'title' => _i('Cities'),
+    'createTitle' => _i('Create City'),
+    'editTitle' => _i('Edit City'),
     'columns' => [
         'id' => [
             'label' => _i('ID'),
@@ -27,21 +29,13 @@ return [
             'editable' => true,
             'model' => 'data',
         ],
-        'code' => [
-            'label' => _i('Code'),
+        'country_id' => [
+            'label' => _i('Country'),
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
             'editable' => true,
-            'model' => 'base',
-        ],
-        'dialing_code' => [
-            'label' => _i('Phone Code'),
-            'type' => 'text',
-            'searchable' => true,
-            'sortable' => true,
-            'editable' => true,
-            'model' => 'base',
+            'model' => 'parentData',
         ],
         'status' => [
             'label' => _i('Status'),

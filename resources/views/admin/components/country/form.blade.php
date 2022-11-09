@@ -1,4 +1,5 @@
-<form action="{{ route('dashboard.' . $route . '.' . $action, isset($item) ? $item->__get('id') : null) }}" method="{{ $method }}" data-form="country">
+<form action="{{ route('dashboard.' . $route . '.' . $action, isset($item) ? $item->__get('id') : null) }}"
+    method="{{ $method }}" data-form="country">
     @csrf
     @method($method)
     <input type="hidden" name="lang_id" value="{{ \App\Bll\Lang::getAdminLangId() }}">
@@ -48,26 +49,3 @@
         </div>
     </div>
 </form>
-
-
-@push('js')
-    <script>
-        $(document).ready(function() {
-            $(document).on('submit', '[data-form]', function (e) {
-                e.preventDefault();
-                let url = $(this).attr('action');
-                let method = $(this).attr('method');
-                let data = $(this).serialize();
-                dashboardAxios(url, method, data);
-            });
-        });
-
-        function onCountrySave() {
-            alert('Country saved successfully');
-        }
-
-        function onCountrySaveError() {
-            alert('Country saved failed');
-        }
-    </script>
-@endpush
