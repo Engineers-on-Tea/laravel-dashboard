@@ -4,11 +4,12 @@
         <ul class="pcoded-item pcoded-left-item">
             @php
                 $nav = require_once resource_path('views/admin/includes/nav.php');
+                // dd($nav);
             @endphp
             @foreach ($nav as $item)
                 @php
                     $active = '';
-                    $active = request()->url() == $item['route'] ? 'active' : '';
+                    $active = request()->url() == ($item['route'] . '/*') ? 'active' : '';
                     $hasMenu = '';
                     $trigger = '';
                     if (count($item['children']) > 0) {
@@ -30,7 +31,7 @@
                     @if (count($item['children']) > 0)
                         <ul class="pcoded-submenu">
                             @foreach ($item['children'] as $child)
-                                <li class="@if (request()->url() == $child['route']) active @endif">
+                                <li class="@if (request()->url() == ($child['route'] . '/*')) active @endif">
                                     <a href="{{ $child['route'] }}">
                                         <span class="pcoded-micon"><i class="feather {{ $child['icon'] }}"></i></span>
                                         <span class="pcoded-mtext">{{ $child['label'] }}</span>

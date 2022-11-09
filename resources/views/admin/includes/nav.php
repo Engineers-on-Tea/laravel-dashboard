@@ -16,13 +16,13 @@ return [
                 'label' => _i('Languages'),
                 'icon' => 'icon-flag',
                 'route' => route('dashboard.language.index'),
-                'hasChild' => false,
+                'children' => [],
             ],
             'country' => [
                 'label' => _i('Countries'),
                 'icon' => 'icon-flag',
                 'route' => route('dashboard.country.index'),
-                'hasChild' => false,
+                'children' => [],
             ],
         ]
     ]
