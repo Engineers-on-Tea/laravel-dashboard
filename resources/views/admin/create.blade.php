@@ -3,7 +3,15 @@
 @section('title', $pageTitle)
 
 @section('contents')
-    <div>
-        CREATE {{ $pageTitle }}
+    @include('admin.includes.page-header')
+    <div class="card">
+        <div class="card-header">
+            <h5>{{ $pageTitle }}</h5>
+        </div>
+        <div class="card-block">
+            <div class="m-b-20">
+                @include($form)
+            </div>
+        </div>
     </div>
 @endsection
