@@ -2,6 +2,7 @@
 
 return [
     'allow_edit' => false,
+    'title' => _i('Languages'),
     'route' => 'language',
     'baseModel' => \App\Modules\Admin\Models\Language::query(),
     'columns' => [
