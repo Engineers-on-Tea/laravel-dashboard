@@ -15,6 +15,12 @@
                             <td>{{ $row->__get($key) }}</td>
                         @elseif ($column['model'] == 'data')
                             <td>{{ $row->AdminTranslated->__get($key) }}</td>
+                        @elseif($column['model'] == 'action')
+                            <td>
+                                @foreach ($column['data'] as $button)
+                                    @include($button, ['id' => $row->__get('id'), 'route' => $route])
+                                @endforeach
+                            </td>
                         @endif
                     @endforeach
                 </tr>
