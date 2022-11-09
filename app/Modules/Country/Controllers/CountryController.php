@@ -22,16 +22,6 @@ class CountryController extends DashboardController
         parent::__construct();
     }
 
-    protected function index(Request $request)
-    {
-        return parent::index($request);
-    }
-
-    protected function create(Request $request)
-    {
-        return parent::create($request);
-    }
-
     protected function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -63,50 +53,34 @@ class CountryController extends DashboardController
         return parent::store($request);
     }
 
-    protected function show(Request $request)
-    {
-        return parent::show($request);
-    }
-
-    protected function edit($id)
-    {
-        return parent::edit($id);
-    }
-
     protected function update(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255|min:3',
-            'code' => 'required|string|max:10|min:2',
-            'dialing_code' => 'required|string|max:10',
+            'code' => 'required|string|max:10|min:2|unique:countries,code,' . $request->id,
+            'dialing_code' => 'required|string|max:10|min:2|unique:countries,dialing_code,' . $request->id,
             'lang_id' => 'required|integer',
+        ], [
+            'title.required' => _i('Title is required'),
+            'code.required' => _i('Code is required'),
+            'code.unique' => _i('Code is already exists'),
+            'dialing_code.required' => _i('Dialing code is required'),
+            'dialing_code.unique' => _i('Dialing code is already exists'),
         ]);
 
+        if ($validator->fails()) {
+            $errors = '';
+            foreach ($validator->errors()->all() as $error) {
+                $errors .= $error . ', ';
+            }
+            $response = [
+                'title' => _i('Error'),
+                'message' => $errors,
+            ];
+
+            return response()->json($response, 422);
+        }
+
         return parent::update($request);
-    }
-
-    protected function destroy($id)
-    {
-        return parent::destroy($id);
-    }
-
-    protected function restore(Request $request)
-    {
-        return parent::restore($request);
-    }
-
-    protected function forceDelete(Request $request)
-    {
-        return parent::forceDelete($request);
-    }
-
-    protected function getTranslation(Request $request)
-    {
-        return parent::getTranslation($request);
-    }
-
-    protected function setTranslation(Request $request)
-    {
-        return parent::setTranslation($request);
     }
 }
