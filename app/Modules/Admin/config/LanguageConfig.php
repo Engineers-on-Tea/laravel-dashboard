@@ -5,6 +5,7 @@ return [
     'title' => _i('Languages'),
     'route' => 'language',
     'baseModel' => \App\Modules\Admin\Models\Language::query(),
+    'uploads' => \App\Bll\Constants::LanguagePath,
     'columns' => [
         'id' => [
             'label' => _i('ID'),

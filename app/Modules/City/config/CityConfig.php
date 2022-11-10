@@ -12,6 +12,7 @@ return [
     'title' => _i('Cities'),
     'createTitle' => _i('Create City'),
     'editTitle' => _i('Edit City'),
+    'uploads' => \App\Bll\Constants::CityPath,
     'columns' => [
         'id' => [
             'label' => _i('ID'),

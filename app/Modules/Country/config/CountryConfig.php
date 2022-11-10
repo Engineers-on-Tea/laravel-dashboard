@@ -10,6 +10,7 @@ return [
     'title' => _i('Countries'),
     'createTitle' => _i('Create Country'),
     'editTitle' => _i('Edit Country'),
+    'uploads' => \App\Bll\Constants::CountryPath,
     'columns' => [
         'id' => [
             'label' => _i('ID'),
