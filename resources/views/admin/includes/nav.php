@@ -3,13 +3,13 @@
 return [
     'dashboard' => [
         'label' => _i('Dashboard'),
-        'icon' => 'icon-home',
+        'icon' => 'icofont-ui-home',
         'route' => route('dashboard.home'),
         'children' => [],
     ],
     'settings' => [
         'label' => _i('Main Settings'),
-        'icon' => 'icon-settings',
+        'icon' => 'icofont-ui-settings',
         'route' => 'javascript:void(0)',
         'children' => [
             'language' => [
@@ -31,5 +31,24 @@ return [
                 'children' => [],
             ],
         ]
-    ]
+    ],
+    'blog' => [
+        'label' => _i('Blog'),
+        'icon' => 'icofont-file-text',
+        'route' => 'javascript:void(0)',
+        'children' => [
+            'blog-category' => [
+                'label' => _i('Blog Categories'),
+                'icon' => 'icon-book',
+                'route' => route('dashboard.blog-category.index'),
+                'children' => [],
+            ],
+            'blog' => [
+                'label' => _i('Blogs'),
+                'icon' => 'icon-align-justify',
+                'route' => route('dashboard.blog.index'),
+                'children' => [],
+            ],
+        ]
+    ],
 ];
