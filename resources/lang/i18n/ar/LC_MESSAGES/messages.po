@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2022-11-07 09:57+0000\n"
-"PO-Revision-Date: 2022-11-07 09:57+0000\n"
+"POT-Creation-Date: 2022-11-10 14:31+0000\n"
+"PO-Revision-Date: 2022-11-10 14:31+0000\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: ar\n"
@@ -19,3 +19,470 @@ msgstr ""
 "X-Poedit-SearchPath-3: Console\n"
 "X-Poedit-SearchPath-4: ../storage/framework/messages/\n"
 
+#: ../resources/views/admin/includes/nav.php:5
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:5
+#: ../storage/framework/messages/da83195d56cf867e06345d5e7444c707b4f3cf2c.php.php:5
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: ../resources/views/admin/includes/nav.php:11
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:11
+msgid "Main Settings"
+msgstr "الإعدادات الأساسية"
+
+#: ../resources/views/admin/includes/nav.php:16
+#: ../storage/framework/messages/0045843a875a694526e8e7d99d03bc800cdc99de.php.php:5
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:69
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:16
+#: ../storage/framework/messages/9fa040ef737e7f536655d11fe2f584a13f787b1c.php.php:26
+#: Modules/Admin/Controllers/LanguageController.php:26
+#: Modules/Admin/config/LanguageConfig.php:5
+msgid "Languages"
+msgstr "اللغات"
+
+#: ../resources/views/admin/includes/nav.php:22
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:22
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:10
+#: Modules/Country/config/CountryConfig.php:10
+msgid "Countries"
+msgstr "الدول"
+
+#: ../resources/views/admin/includes/nav.php:28
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:28
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:12
+#: Modules/City/config/CityConfig.php:12
+msgid "Cities"
+msgstr "المدن"
+
+#: ../resources/views/admin/includes/nav.php:36
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:36
+msgid "Blog"
+msgstr "المدونة"
+
+#: ../resources/views/admin/includes/nav.php:41
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:10
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:41
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:10
+msgid "Blog Categories"
+msgstr "تصنيفات المدونة"
+
+#: ../resources/views/admin/includes/nav.php:47
+#: ../storage/framework/messages/9ef7b8c2b2905095e32f70fa2343a3ee2abcb80c.php.php:47
+msgid "Blogs"
+msgstr "المدونات"
+
+#: ../storage/framework/messages/0045843a875a694526e8e7d99d03bc800cdc99de.php.php:11
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:16
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:18
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:16
+#: Modules/Admin/config/LanguageConfig.php:11
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:16
+#: Modules/City/config/CityConfig.php:18
+#: Modules/Country/config/CountryConfig.php:16
+msgid "ID"
+msgstr "رقم التعريف (ID)"
+
+#: ../storage/framework/messages/0045843a875a694526e8e7d99d03bc800cdc99de.php.php:19
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:9
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:9
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:40
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:26
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:24
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:9
+#: Modules/Admin/config/LanguageConfig.php:19
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:40
+#: Modules/City/config/CityConfig.php:26
+#: Modules/Country/config/CountryConfig.php:24
+msgid "Title"
+msgstr "الاسم"
+
+#: ../storage/framework/messages/0045843a875a694526e8e7d99d03bc800cdc99de.php.php:27
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:32
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:17
+#: Modules/Admin/config/LanguageConfig.php:27
+#: Modules/Country/config/CountryConfig.php:32
+msgid "Code"
+msgstr "الرمز"
+
+#: ../storage/framework/messages/0045843a875a694526e8e7d99d03bc800cdc99de.php.php:35
+#: ../storage/framework/messages/880045bf431a54cea8b1250c33aa52c31b15eb91.php.php:18
+#: Modules/Admin/Models/Language.php:18
+#: Modules/Admin/config/LanguageConfig.php:35
+msgid "Default"
+msgstr "الإفتراضي"
+
+#: ../storage/framework/messages/0045843a875a694526e8e7d99d03bc800cdc99de.php.php:43
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:56
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:66
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:72
+#: Modules/Admin/config/LanguageConfig.php:43
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:56
+#: Modules/City/config/CityConfig.php:66
+#: Modules/Country/config/CountryConfig.php:72
+msgid "Created At"
+msgstr "تاريخ الإنشاء"
+
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:34
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:62
+#: ../storage/framework/messages/6f251fa7a6cac3c01b452cb7cc97f9e0858ffc63.php.php:33
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:33
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:64
+#: Modules/BlogCategory/Controllers/BlogCategoryController.php:33
+#: Modules/City/Controllers/CityController.php:34
+#: Modules/City/Controllers/CityController.php:62
+#: Modules/Country/Controllers/CountryController.php:33
+#: Modules/Country/Controllers/CountryController.php:64
+msgid "Title is required"
+msgstr "الاسم مطلوب"
+
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:35
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:63
+#: Modules/City/Controllers/CityController.php:35
+#: Modules/City/Controllers/CityController.php:63
+msgid "Country is required"
+msgstr "الدولة مطلوبة"
+
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:36
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:64
+#: Modules/City/Controllers/CityController.php:36
+#: Modules/City/Controllers/CityController.php:64
+msgid "Country does not exists"
+msgstr "هذه الدولة غير موجودة"
+
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:45
+#: ../storage/framework/messages/0b5decfed8a2e2c6f018c4396511e40e11d15ba3.php.php:73
+#: ../storage/framework/messages/2ff01a3bf22360167309019bf641b6b65bcf81fd.php.php:22
+#: ../storage/framework/messages/6f251fa7a6cac3c01b452cb7cc97f9e0858ffc63.php.php:45
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:210
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:46
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:46
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:77
+#: Modules/Admin/Controllers/DashboardController.php:210
+#: Modules/BlogCategory/Controllers/BlogCategoryController.php:45
+#: Modules/City/Controllers/CityController.php:45
+#: Modules/City/Controllers/CityController.php:73
+#: Modules/Country/Controllers/CountryController.php:46
+#: Modules/Country/Controllers/CountryController.php:77
+msgid "Error"
+msgstr "خطأ"
+
+#: ../storage/framework/messages/21569e7ce2e51e5e16abbeb240a64d89723c2da3.php.php:1
+msgid "Home"
+msgstr "الرئيسية"
+
+#: ../storage/framework/messages/2ff01a3bf22360167309019bf641b6b65bcf81fd.php.php:18
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:129
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:190
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:201
+#: Modules/Admin/Controllers/DashboardController.php:129
+#: Modules/Admin/Controllers/DashboardController.php:190
+#: Modules/Admin/Controllers/DashboardController.php:201
+msgid "Success"
+msgstr "نجاح"
+
+#: ../storage/framework/messages/2ff01a3bf22360167309019bf641b6b65bcf81fd.php.php:18
+msgid "Data saved successfully"
+msgstr "تم حفظ البيانات بنجاح"
+
+#: ../storage/framework/messages/2ff01a3bf22360167309019bf641b6b65bcf81fd.php.php:22
+msgid "An error occurred while saving data"
+msgstr "حدث خطأ أثناء حفظ البيانات"
+
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:14
+msgid "City Name"
+msgstr "اسم المدينة"
+
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:17
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:34
+#: Modules/City/config/CityConfig.php:34
+msgid "Country"
+msgstr "الدولة"
+
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:21
+msgid "Select Country"
+msgstr "اختر الدولة"
+
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:30
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:34
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:50
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:56
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:32
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:36
+#: Modules/City/config/CityConfig.php:50
+#: Modules/Country/config/CountryConfig.php:56
+msgid "Latitude"
+msgstr "خط الطول"
+
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:37
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:41
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:58
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:64
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:39
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:43
+#: Modules/City/config/CityConfig.php:58
+#: Modules/Country/config/CountryConfig.php:64
+msgid "Longitude"
+msgstr "خط العرض"
+
+#: ../storage/framework/messages/37d305b4fe87590d898e3293dd81b3da34075898.php.php:46
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:38
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:48
+msgid "Save"
+msgstr "حفظ"
+
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:14
+msgid "Blog Category Name"
+msgstr "اسم تصنيف المدونة"
+
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:17
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:24
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:24
+msgid "Image"
+msgstr "الصورة"
+
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:23
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:27
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:32
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:32
+msgid "Slug"
+msgstr "اسم مختصر"
+
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:30
+#: ../storage/framework/messages/3a36948e479c4d88cdd40a005dc420213251dc80.php.php:33
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:48
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:48
+msgid "Description"
+msgstr "الوصف"
+
+#: ../storage/framework/messages/60c9fffc4ff28dc0b0b10bfc5a97bd22ed166415.php.php:57
+msgid "Yes, delete it!"
+msgstr "نعم، قم بالحذف!"
+
+#: ../storage/framework/messages/60c9fffc4ff28dc0b0b10bfc5a97bd22ed166415.php.php:70
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:61
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: ../storage/framework/messages/60c9fffc4ff28dc0b0b10bfc5a97bd22ed166415.php.php:76
+msgid "Are you sure you want to delete this item?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا العنصر؟"
+
+#: ../storage/framework/messages/60c9fffc4ff28dc0b0b10bfc5a97bd22ed166415.php.php:77
+msgid "Delete"
+msgstr "حذف"
+
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:11
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:11
+msgid "Create Blog Category"
+msgstr "إنشاء تصنيف المدونة"
+
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:12
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:12
+msgid "Edit Blog Category"
+msgstr "تعديل تصنيف المدونة"
+
+#: ../storage/framework/messages/6575fac43fe430b6cd7e8a73a7bffa88015b897f.php.php:64
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:74
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:80
+#: Modules/BlogCategory/config/BlogCategoryConfig.php:64
+#: Modules/City/config/CityConfig.php:74
+#: Modules/Country/config/CountryConfig.php:80
+msgid "Options"
+msgstr "خيارات"
+
+#: ../storage/framework/messages/6f251fa7a6cac3c01b452cb7cc97f9e0858ffc63.php.php:34
+#: Modules/BlogCategory/Controllers/BlogCategoryController.php:34
+msgid "Description is required"
+msgstr "الوصف مطلوب"
+
+#: ../storage/framework/messages/6f251fa7a6cac3c01b452cb7cc97f9e0858ffc63.php.php:35
+#: Modules/BlogCategory/Controllers/BlogCategoryController.php:35
+msgid "Image is required"
+msgstr "الصورة مطلوبة"
+
+#: ../storage/framework/messages/6f251fa7a6cac3c01b452cb7cc97f9e0858ffc63.php.php:36
+#: Modules/BlogCategory/Controllers/BlogCategoryController.php:36
+msgid "Image is not valid"
+msgstr "امتداد الصورة غير صحيح"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:34
+msgid "Notifications"
+msgstr "الإشعارات"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:35
+msgid "New"
+msgstr "جديد"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:44
+msgid "User name example"
+msgstr "مثال لاسم المستخدم"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:45
+msgid "Notification body example"
+msgstr "مثال لنص الإشعار"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:46
+msgid "30 minutes ago"
+msgstr ""
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:101
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:107
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: ../storage/framework/messages/7462566b71028fbcb18340ce01e6b91bae0d6a4f.php.php:113
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: ../storage/framework/messages/871799c14ee254ddd773a563a7d9b6b212470b2d.php.php:26
+#: ../storage/framework/messages/d9a856aed24086ed1aeb9344ee78ce52d8c4da20.php.php:22
+#: Modules/City/Models/City.php:26 Modules/Country/Models/Country.php:22
+msgid "Active"
+msgstr "نشط"
+
+#: ../storage/framework/messages/871799c14ee254ddd773a563a7d9b6b212470b2d.php.php:26
+#: ../storage/framework/messages/d9a856aed24086ed1aeb9344ee78ce52d8c4da20.php.php:22
+#: Modules/City/Models/City.php:26 Modules/Country/Models/Country.php:22
+msgid "Not Active"
+msgstr "غير نشط"
+
+#: ../storage/framework/messages/880045bf431a54cea8b1250c33aa52c31b15eb91.php.php:18
+#: Modules/Admin/Models/Language.php:18
+msgid "Not Default"
+msgstr "غير إفتراضي"
+
+#: ../storage/framework/messages/ab2063b977ce553726f4350b5b5ef60d4cf8a8d6.php.php:3
+msgid "Navigation"
+msgstr "التصفح"
+
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:13
+#: Modules/City/config/CityConfig.php:13
+msgid "Create City"
+msgstr "إنشاء مدينة"
+
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:14
+#: Modules/City/config/CityConfig.php:14
+msgid "Edit City"
+msgstr "تعديل مدينة"
+
+#: ../storage/framework/messages/b4a687f4907022570fa9773ccc79813b7db87d7d.php.php:42
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:48
+#: Modules/City/config/CityConfig.php:42
+#: Modules/Country/config/CountryConfig.php:48
+msgid "Status"
+msgstr "الحالة"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:130
+#: Modules/Admin/Controllers/DashboardController.php:130
+msgid "New record created successfully"
+msgstr "تم تسجيل عنصر جديد بنجاح"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:191
+#: Modules/Admin/Controllers/DashboardController.php:191
+msgid "Record updated successfully"
+msgstr "تم تعديل العنصر بنجاح"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:202
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:243
+#: Modules/Admin/Controllers/DashboardController.php:202
+#: Modules/Admin/Controllers/DashboardController.php:243
+msgid "Deleted Successfully"
+msgstr "تم الحذف بنجاح"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:211
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:251
+#: Modules/Admin/Controllers/DashboardController.php:211
+#: Modules/Admin/Controllers/DashboardController.php:251
+msgid "Error Deleting"
+msgstr "خطأ أثناء الحذف"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:223
+#: Modules/Admin/Controllers/DashboardController.php:223
+msgid "Restored Successfully"
+msgstr "تم الإستعادة بنجاح"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:231
+#: Modules/Admin/Controllers/DashboardController.php:231
+msgid "Error Restoring"
+msgstr "خطأ في الإستعادة"
+
+#: ../storage/framework/messages/cec54f7834e7c6007fada9e04d628bdbad1e416f.php.php:288
+#: Modules/Admin/Controllers/DashboardController.php:288
+msgid "Translation saved successfully"
+msgstr "تم حفظ الترجمة بنجاح"
+
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:31
+msgid "Successful"
+msgstr "تم بنجاح"
+
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:36
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:50
+msgid "Ok"
+msgstr "تأكيد"
+
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:54
+msgid "Caution"
+msgstr "إنتباء"
+
+#: ../storage/framework/messages/eb8995e89c5cf009c1e87b62da62e5ad84b2df14.php.php:64
+msgid "Yes"
+msgstr "نعم"
+
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:11
+#: Modules/Country/config/CountryConfig.php:11
+msgid "Create Country"
+msgstr "إنشاء دولة"
+
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:12
+#: Modules/Country/config/CountryConfig.php:12
+msgid "Edit Country"
+msgstr "تعديل دولة"
+
+#: ../storage/framework/messages/ec5de6e044aea27b4f9c6de89d6c741aeb61cf7e.php.php:40
+#: Modules/Country/config/CountryConfig.php:40
+msgid "Phone Code"
+msgstr "كود الهاتف الدولي"
+
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:34
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:65
+#: Modules/Country/Controllers/CountryController.php:34
+#: Modules/Country/Controllers/CountryController.php:65
+msgid "Code is required"
+msgstr "كود الدولة مطلوب"
+
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:35
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:66
+#: Modules/Country/Controllers/CountryController.php:35
+#: Modules/Country/Controllers/CountryController.php:66
+msgid "Code is already exists"
+msgstr "كود الدولة موجود من قبل"
+
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:36
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:67
+#: Modules/Country/Controllers/CountryController.php:36
+#: Modules/Country/Controllers/CountryController.php:67
+msgid "Dialing code is required"
+msgstr "كود الهاتف الدولي مطلوب"
+
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:37
+#: ../storage/framework/messages/f82de144a1753ddc3ae05f7c5047b303abc6699d.php.php:68
+#: Modules/Country/Controllers/CountryController.php:37
+#: Modules/Country/Controllers/CountryController.php:68
+msgid "Dialing code is already exists"
+msgstr "كود الهاتف الدولي موجود من قبل"
+
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:14
+msgid "Country Name"
+msgstr "اسم المدينة"
+
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:21
+msgid "Country Code"
+msgstr "كود الدولة"
+
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:24
+#: ../storage/framework/messages/fc69a6ae88f31e6157ed98fc0f4769c4919afb1f.php.php:28
+msgid "Dialing Code"
+msgstr "كود الهاتف الدولي"
