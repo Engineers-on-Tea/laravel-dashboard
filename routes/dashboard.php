@@ -1,17 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Modules\Country\Controllers\CountryController;
+use App\Modules\Blog\Controllers\BlogController;
+use App\Modules\City\Controllers\CityController;
 use App\Modules\Admin\Controllers\LanguageController;
 use App\Modules\Admin\Controllers\DashboardController;
-use App\Modules\City\Controllers\CityController;
+use App\Modules\Country\Controllers\CountryController;
+use App\Modules\BlogCategory\Controllers\BlogCategoryController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Dashboard Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register Dashboard web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
@@ -34,4 +36,9 @@ Route::name('dashboard.')
 
         Route::resource('language', LanguageController::class)
             ->only(['index']);
+
+        Route::resource('blog-category', BlogCategoryController::class)
+            ->except(['show']);
+
+        Route::resource('blog', BlogController::class);
     });

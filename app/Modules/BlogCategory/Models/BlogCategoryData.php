@@ -3,6 +3,7 @@
 namespace App\Modules\BlogCategory\Models;
 
 use App\Models\BaseModel;
+use App\Modules\Admin\Models\Language;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Modules\BlogCategory\Models\BlogCategory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,5 +21,10 @@ class BlogCategoryData extends BaseModel
     public function Master(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class, 'master_id', 'id');
+    }
+
+    public function Lang(): BelongsTo
+    {
+        return $this->belongsTo(Language::class, 'lang_id', 'id');
     }
 }
