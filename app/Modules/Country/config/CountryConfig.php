@@ -77,7 +77,7 @@ return [
             'model' => 'base',
         ],
         'action' => [
-            'label' => _i('Action'),
+            'label' => _i('Options'),
             'type' => 'action',
             'searchable' => false,
             'sortable' => false,
