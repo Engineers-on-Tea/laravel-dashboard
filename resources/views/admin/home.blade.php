@@ -278,9 +278,9 @@
                     <div class="row m-b-25">
                         <div class="col-auto p-r-0">
                             <div class="u-img">
-                                <img src="..\files\assets\images\breadcrumb-bg.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/breadcrumb-bg.jpg') }}" alt="user image"
                                     class="img-radius cover-img">
-                                <img src="..\files\assets\images\avatar-2.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}" alt="user image"
                                     class="img-radius profile-img">
                             </div>
                         </div>
@@ -294,9 +294,9 @@
                     <div class="row m-b-25">
                         <div class="col-auto p-r-0">
                             <div class="u-img">
-                                <img src="..\files\assets\images\breadcrumb-bg.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/breadcrumb-bg.jpg') }}" alt="user image"
                                     class="img-radius cover-img">
-                                <img src="..\files\assets\images\avatar-2.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}" alt="user image"
                                     class="img-radius profile-img">
                             </div>
                         </div>
@@ -310,9 +310,9 @@
                     <div class="row m-b-25">
                         <div class="col-auto p-r-0">
                             <div class="u-img">
-                                <img src="..\files\assets\images\breadcrumb-bg.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/breadcrumb-bg.jpg') }}" alt="user image"
                                     class="img-radius cover-img">
-                                <img src="..\files\assets\images\avatar-2.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}" alt="user image"
                                     class="img-radius profile-img">
                             </div>
                         </div>
@@ -326,9 +326,9 @@
                     <div class="row m-b-5">
                         <div class="col-auto p-r-0">
                             <div class="u-img">
-                                <img src="..\files\assets\images\breadcrumb-bg.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/breadcrumb-bg.jpg') }}" alt="user image"
                                     class="img-radius cover-img">
-                                <img src="..\files\assets\images\avatar-2.jpg" alt="user image"
+                                <img src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}" alt="user image"
                                     class="img-radius profile-img">
                             </div>
                         </div>
@@ -400,7 +400,7 @@
                                             <tr>
                                                 <td class="b-none">
                                                     <a href="#!" class="align-middle">
-                                                        <img src="..\files\assets\images\avatar-2.jpg"
+                                                        <img src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}"
                                                             alt="user image"
                                                             class="img-radius img-40 align-top m-r-15">
                                                         <div class="d-inline-block">
@@ -431,7 +431,7 @@
                     <div class="col-sm-4 bg-c-lite-green user-profile">
                         <div class="card-block text-center text-white">
                             <div class="m-b-25">
-                                <img src="..\files\assets\images\avatar-4.jpg" class="img-radius"
+                                <img src="{{ asset('admin_dashboard/assets/images/avatar-4.jpg') }}" class="img-radius"
                                     alt="User-Profile-Image">
                             </div>
                             <h6 class="f-w-600">Jeny William</h6>
@@ -445,7 +445,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <p class="m-b-10 f-w-600">Email</p>
-                                    <h6 class="text-muted f-w-400"><a href="..\..\..\cdn-cgi\l\email-protection.htm"
+                                    <h6 class="text-muted f-w-400"><a href="../../../cdn-cgi/l/email-protection.htm"
                                             class="__cf_email__"
                                             data-cfemail="3a505f54437a5d575b535614595557">[email&#160;protected]</a>
                                     </h6>

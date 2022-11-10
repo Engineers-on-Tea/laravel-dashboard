@@ -62,23 +62,17 @@
                                 {{ $lang->__get('title') }}
                             </span>
                         </div>
-                        <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn"
+                        <ul class="dropdown-menu" data-dropdown-in="fadeIn"
                             data-dropdown-out="fadeOut">
                             <li>
                                 <h6>{{ _i('Languages') }}</h6>
                             </li>
                             @foreach ($langs as $item)
-                                <li>
-                                    <div class="media">
+                                <li >
+                                    <a href="{{ route('dashboard.change.lang', $item->__get('id')) }}">
                                         <i class="flag-icon flag-icon-background {{ $item->__get('flag') }}"></i>
-                                        <div class="media-body">
-                                            <p class="notification-msg">
-                                                <a href="{{ route('dashboard.change.lang', $item->__get('id')) }}">
-                                                    {{ $item->__get('title') }}
-                                                </a>
-                                            </p>
-                                        </div>
-                                    </div>
+                                        {{ $item->__get('title') }}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
