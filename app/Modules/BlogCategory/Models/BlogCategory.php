@@ -18,28 +18,4 @@ class BlogCategory extends BaseModel
     protected $table = 'blogs_categories';
 
     protected $guarded = [];
-
-    public function Data(): HasMany
-    {
-        return $this->hasMany(BlogCategoryData::class, 'master_id', 'id');
-    }
-
-    public function AdminTranslated(): HasOne
-    {
-        $value = $this->hasOne(BlogCategoryData::class, 'master_id', 'id')
-            ->where('lang_id', Lang::getAdminLangId());
-
-        if (!$value) {
-            $value = $this->hasOne(BlogCategoryData::class, 'master_id', 'id');
-        }
-
-        return $value;
-    }
-
-    public function Translation(): HasOne
-    {
-        return $this->hasOne(BlogCategoryData::class, 'master_id', 'id')
-            ->where('lang_id', Lang::getLang());
-    }
-
 }

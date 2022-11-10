@@ -10,16 +10,27 @@ class Utility
     {
         $countries = Country::query()
             ->with([
-                'AdminTranslated'
+                'Data'
             ])
             ->where('status', 1)
             ->get();
         $countries = $countries->map(function ($country) {
             return [
                 'id' => $country->id,
-                'title' => $country->AdminTranslated->title,
+                'title' => self::getTranslatedValueAdmin($country, 'title'),
             ];
         });
         return $countries;
+    }
+
+    public static function getTranslatedValueAdmin($item, $key)
+    {
+        $value = $item->Data->where('lang_id', Lang::getAdminLangId())->first();
+
+        if (!$value) {
+            $value = $item->Data->first();
+        }
+
+        return $value->__get($key);
     }
 }

@@ -52,11 +52,11 @@ class DashboardController extends Controller
         $pageTitle = $this->config['title'];
 
         if ($this->dataModel != null) {
-            $content = $content->with(['AdminTranslated']);
+            $content = $content->with(['Data']);
         }
 
         if ($this->parentModel != null) {
-            $content = $content->with(['Parent.AdminTranslated']);
+            $content = $content->with(['Parent.Data']);
         }
 
         $content = $content->paginate(10);
@@ -69,6 +69,7 @@ class DashboardController extends Controller
             'pageTitle' => $pageTitle,
             'allowEdit' => $this->allow_edit,
             'route' => $this->route,
+            'uploads' => $this->config['uploads'],
         ];
 
         if ($request->ajax()) {
@@ -119,6 +120,10 @@ class DashboardController extends Controller
         array_push($dataColums, 'lang_id');
 
         $newData = $this->dataModel->create($request->only($dataColums));
+
+        if ($request->has('image')) {
+            $this->saveImage($request->file('image'), $newBase->id);
+        }
 
         $response = [
             'title' => _i('Success'),
@@ -281,5 +286,22 @@ class DashboardController extends Controller
         }
 
         return response()->json(['message' => _i('Translation saved successfully')]);
+    }
+
+    private function saveImage($file, $id)
+    {
+        $path = $this->config['uploads'];
+
+        $path = public_path($path . $id . DIRECTORY_SEPARATOR);
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $fileName = $file->getClientOriginalName() . '.' . $file->getClientOriginalExtension();
+
+        $file->move($path, $fileName);
+
+        $this->model->where('id', $id)->update(['image' => $fileName]);
     }
 }

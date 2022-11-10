@@ -3,8 +3,8 @@
 namespace App\Modules\City\Controllers;
 
 use Illuminate\Http\Request;
-use App\Modules\Admin\Controllers\DashboardController;
 use Illuminate\Support\Facades\Validator;
+use App\Modules\Admin\Controllers\DashboardController;
 
 class CityController extends DashboardController
 {
