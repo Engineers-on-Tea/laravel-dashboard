@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ \App\Bll\Lang::getAdminLangCode() }}" dir="{{ \App\Bll\Lang::getAdminLangDir() }}">
+<html lang="en">
 
 <head>
     <title>@yield('title') | {{ _i('Dashboard') }}</title>
@@ -17,9 +17,45 @@
         href="{{ asset('admin_dashboard/bower_components/bootstrap/css/bootstrap.min.css') }}">
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/icon/feather/css/feather.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/flag-icons/css/flag-icon.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/font-awesome/css/font-awesome.min.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/icon/icofont/css/icofont.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/ion-icon/css/ionicons.min.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/material-design/css/material-design-iconic-font.min.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/simple-line-icons/css/simple-line-icons.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/SVG-animated/svg-weather.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/themify-icons/themify-icons.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/typicons-icons/css/typicons.min.css') }}">
+    <!-- feather Awesome -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/icon/weather-icons/css/weather-icons-wind.min.css') }}">
     <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/pages/prism/prism.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/jquery.mCustomScrollbar.css') }}">
+
+    @if (\App\Bll\Lang::getAdminLangDir() == 'rtl')
+        <link rel="stylesheet" type="text/css" href="{{ asset('admin_dashboard/assets/css/rtl.css') }}">
+    @endif
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('admin_dashboard/assets/css/jquery.mCustomScrollbar.css') }}">
 
     @stack('css')
     @stack('style')
@@ -82,8 +118,6 @@
     <script type="text/javascript" src="{{ asset('admin_dashboard/assets/pages/dashboard/custom-dashboard.js') }}">
     </script>
     <script type="text/javascript" src="{{ asset('admin_dashboard/assets/js/script.min.js') }}"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     @if (\App\Bll\Lang::getAdminLangDir() == 'rtl')
         <script>
             $(document).ready(function() {
@@ -92,7 +126,10 @@
                 });
             });
         </script>
+        <script src="{{ asset('admin_dashboard/assets/js/menu/menu-rtl.js') }}"></script>
     @endif
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
