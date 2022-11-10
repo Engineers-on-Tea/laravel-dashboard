@@ -11,7 +11,7 @@
             <div class="page-header-breadcrumb">
                 <ul class="breadcrumb-title">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('dashboard.home') }}"> <i class="feather icon-home"></i> </a>
+                        <a href="{{ route('dashboard.home') }}"> <i class="icofont icofont-ui-home"></i> </a>
                     </li>
                     @if (isset($baseRoute))
                         <li class="breadcrumb-item">

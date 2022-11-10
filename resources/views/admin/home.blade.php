@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', _i('Dashboard'))
+@section('title', _i('Home'))
 
 {{-- TODO: Partial Layout --}}
 @section('contents')

@@ -18,7 +18,7 @@
                     <div class="media userlist-box" data-id="1" data-status="online" data-username="Josephin Doe"
                         data-toggle="tooltip" data-placement="left" title="Josephin Doe">
                         <a class="media-left" href="#!">
-                            <img class="media-object img-radius img-radius" src="..\files\assets\images\avatar-3.jpg"
+                            <img class="media-object img-radius img-radius" src="{{ asset('admin_dashboard/assets/images/avatar-3.jpg') }}"
                                 alt="Generic placeholder image ">
                             <div class="live-status bg-success"></div>
                         </a>
@@ -29,7 +29,7 @@
                     <div class="media userlist-box" data-id="2" data-status="online" data-username="Lary Doe"
                         data-toggle="tooltip" data-placement="left" title="Lary Doe">
                         <a class="media-left" href="#!">
-                            <img class="media-object img-radius" src="..\files\assets\images\avatar-2.jpg"
+                            <img class="media-object img-radius" src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}"
                                 alt="Generic placeholder image">
                             <div class="live-status bg-success"></div>
                         </a>
@@ -40,7 +40,7 @@
                     <div class="media userlist-box" data-id="3" data-status="online" data-username="Alice"
                         data-toggle="tooltip" data-placement="left" title="Alice">
                         <a class="media-left" href="#!">
-                            <img class="media-object img-radius" src="..\files\assets\images\avatar-4.jpg"
+                            <img class="media-object img-radius" src="{{ asset('admin_dashboard/assets/images/avatar-4.jpg') }}"
                                 alt="Generic placeholder image">
                             <div class="live-status bg-success"></div>
                         </a>
@@ -51,7 +51,7 @@
                     <div class="media userlist-box" data-id="4" data-status="online" data-username="Alia"
                         data-toggle="tooltip" data-placement="left" title="Alia">
                         <a class="media-left" href="#!">
-                            <img class="media-object img-radius" src="..\files\assets\images\avatar-3.jpg"
+                            <img class="media-object img-radius" src="{{ asset('admin_dashboard/assets/images/avatar-3.jpg') }}"
                                 alt="Generic placeholder image">
                             <div class="live-status bg-success"></div>
                         </a>
@@ -62,7 +62,7 @@
                     <div class="media userlist-box" data-id="5" data-status="online" data-username="Suzen"
                         data-toggle="tooltip" data-placement="left" title="Suzen">
                         <a class="media-left" href="#!">
-                            <img class="media-object img-radius" src="..\files\assets\images\avatar-2.jpg"
+                            <img class="media-object img-radius" src="{{ asset('admin_dashboard/assets/images/avatar-2.jpg') }}"
                                 alt="Generic placeholder image">
                             <div class="live-status bg-success"></div>
                         </a>

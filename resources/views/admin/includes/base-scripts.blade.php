@@ -5,6 +5,11 @@
             url: url,
             data: data,
             token: '{{ csrf_token() }}',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
         }).then(function(response) {
             if (onSuccess) {
                 onSuccess(response.data);
@@ -12,7 +17,6 @@
                 swalSuccess(response.data.title, response.data.message, 'success', 2000);
             }
         }).catch(function(error) {
-            console.log(error);
             if (onError) {
                 onError(error);
             } else {
@@ -34,9 +38,6 @@
             if (onClose != null) {
                 onClose();
             }
-            // else {
-            //     window.history.back();
-            // }
         });
     }
 

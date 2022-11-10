@@ -20,7 +20,9 @@
                     </div>
                     <div class="card-block">
                         @include('admin.includes.table')
-                        {{ $content->links() }}
+                        <div class="d-flex justify-content-center">
+                            {{ $content->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
