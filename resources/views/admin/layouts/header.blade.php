@@ -43,7 +43,7 @@
                                     <div class="media-body">
                                         <h5 class="notification-user">{{ _i('User name example') }}</h5>
                                         <p class="notification-msg">{{ _i('Notification body example') }}</p>
-                                        <span class="notification-time">{{ _i('30 minutes ago') }}</span>
+                                        <span class="notification-time">30 minutes ago</span>
                                     </div>
                                 </div>
                             </li>
