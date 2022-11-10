@@ -6,6 +6,7 @@ use App\Bll\Lang;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Xinax\LaravelGettext\Facades\LaravelGettext;
 
 class SetLocale
@@ -19,18 +20,20 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->segment(1) && $request->segment(1) != 'admin') {
-            $code = $request->segment(1);
-            $supportedLocales = config('laravel-gettext.supported-locales');
-            if (!in_array($code, $supportedLocales)) {
-                $code = config('laravel-gettext.fallback-locale');
-            }
+        $segments = $request->segments();
+        // dd($segments);
+        $segment = $segments[0];
+        $supportedLocales = config('laravel-gettext.supported-locales');
+        if ($segment && in_array($segment, $supportedLocales)) {
+            $code = $segment;
         } else {
             $code = Lang::getAdminLangCode();
         }
 
-        App::setLocale($code);
+        app()->setLocale($code);
+
         LaravelGettext::setLocale($code);
+        Session::put('locale', $code);
 
         return $next($request);
     }
