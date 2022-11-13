@@ -10,7 +10,16 @@
         </div>
         <div class="card-block">
             <div class="m-b-20">
-                @include($form)
+                @php
+                    $data = [
+                        'columns' => $columns,
+                        'item' => $item ?? null,
+                        'route' => $route,
+                        'action' => $action,
+                        'method' => $method,
+                    ];
+                @endphp
+                @include('admin.includes.form', $data)
             </div>
         </div>
     </div>

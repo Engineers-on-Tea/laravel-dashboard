@@ -16,9 +16,4 @@ class Country extends BaseModel
 
     protected $table = 'countries';
     protected $guarded = [];
-
-    public function getStatusAttribute($value)
-    {
-        return $value == 1 ? _i('Active') : _i('Not Active');
-    }
 }

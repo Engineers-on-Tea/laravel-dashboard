@@ -15,17 +15,17 @@
                             @if ($column['model'] == 'base')
                                 @if ($column['type'] == 'image')
                                     <div class="d-flex justify-content-center">
-                                        <img src="{{ asset($uploads . $row->__get('id') . DIRECTORY_SEPARATOR . $row->__get($key)) }}"
-                                            alt="{{ $row->__get($key) }}" width="100" height="100">
+                                        <img src="{{ asset($uploads . $row->__get('id') . DIRECTORY_SEPARATOR . $row->__get($column['name'])) }}"
+                                            alt="{{ $row->__get($column['name']) }}" width="100" height="100">
                                     </div>
                                 @else
-                                    {{ $row->__get($key) }}
+                                    {{ $row->__get($column['name']) }}
                                 @endif
                             @elseif ($column['model'] == 'data')
                                 @if ($column['type'] == 'description' || $column['type'] == 'body')
-                                    {{ Str::limit(\App\Bll\Utility::getTranslatedValueAdmin($row, $key), 25) }}
+                                    {{ Str::limit(\App\Bll\Utility::getTranslatedValueAdmin($row, $column['name']), 25) }}
                                 @else
-                                    {{ \App\Bll\Utility::getTranslatedValueAdmin($row, $key) }}
+                                    {{ \App\Bll\Utility::getTranslatedValueAdmin($row, $column['name']) }}
                                 @endif
                             @elseif ($column['model'] == 'parentData')
                                 @php $parent = $row->Parent; @endphp

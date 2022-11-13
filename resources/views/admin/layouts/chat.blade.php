@@ -84,7 +84,7 @@
     </div>
     <div class="media chat-messages">
         <a class="media-left photo-table" href="#!">
-            <img class="media-object img-radius img-radius m-t-5" src="..\files\assets\images\avatar-3.jpg"
+            <img class="media-object img-radius img-radius m-t-5" src="{{ asset('admin_dashboard/assets/images/avatar-3.jpg') }}"
                 alt="Generic placeholder image">
         </a>
         <div class="media-body chat-menu-content">
@@ -103,7 +103,7 @@
         </div>
         <div class="media-right photo-table">
             <a href="#!">
-                <img class="media-object img-radius img-radius m-t-5" src="..\files\assets\images\avatar-4.jpg"
+                <img class="media-object img-radius img-radius m-t-5" src="{{ asset('admin_dashboard/assets/images/avatar-4.jpg') }}"
                     alt="Generic placeholder image">
             </a>
         </div>

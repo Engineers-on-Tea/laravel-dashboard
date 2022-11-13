@@ -89,7 +89,7 @@ class DashboardController extends Controller
             'item' => null,
             'baseRoute' => $this->config['base_route'],
             'baseTitle' => $this->config['title'],
-            'form' => $this->config['form']
+            'columns' => $this->columns,
         ];
 
         return view('admin.create', $data);
@@ -101,17 +101,16 @@ class DashboardController extends Controller
         $baseColums = [];
         foreach ($this->columns as $key => $column) {
             if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable'] == true) {
-                $baseColums[$key] = $column;
+                $baseColums[] = $column['name'];
             }
         }
-        $baseColums = array_keys($baseColums);
         $newBase = $this->model->create($request->only($baseColums));
 
         // get column names from colums having model data
         $dataColums = [];
         foreach ($this->columns as $key => $column) {
             if ($column['model'] == 'data' && $column['editable'] == true) {
-                $dataColums[] = $key;
+                $dataColums[] = $column['name'];
             }
         }
         // append master id to request
@@ -136,14 +135,14 @@ class DashboardController extends Controller
     protected function show(Request $request)
     {
         $item = $this->model->with([
-            'AdminTranslated'
+            'Data'
         ])->findOrFail($request->input('id'));
     }
 
     protected function edit($id)
     {
         $item = $this->model->with([
-            'AdminTranslated'
+            'Data'
         ])->findOrFail($id);
 
         $data = [
@@ -154,7 +153,7 @@ class DashboardController extends Controller
             'item' => $item,
             'baseRoute' => $this->config['base_route'],
             'baseTitle' => $this->config['title'],
-            'form' => $this->config['form']
+            'columns' => $this->columns,
         ];
 
         return view('admin.edit', $data);
@@ -167,24 +166,23 @@ class DashboardController extends Controller
         // filter column names from colums having model base
         $baseColums = [];
         foreach ($this->columns as $key => $column) {
-            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData')) {
-                $baseColums[$key] = $column;
+            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable'] == true) {
+                $baseColums[] = $column['name'];
             }
         }
-        $baseColums = array_keys($baseColums);
         $item->update($request->only($baseColums));
 
         // get column names from colums having model data
         $dataColums = [];
         foreach ($this->columns as $key => $column) {
-            if ($column['model'] == 'data') {
-                $dataColums[] = $key;
+            if ($column['model'] == 'data' && $column['editable'] == true) {
+                $dataColums[] = $column['name'];
             }
         }
-        $this->dataModel->where([
+        $this->dataModel->updateOrCreate([
             'master_id' => $item->id,
             'lang_id' => Lang::getAdminLangId()
-        ])->update($request->only($dataColums));
+        ], $request->only($dataColums));
 
         $response = [
             'title' => _i('Success'),

@@ -20,9 +20,4 @@ class City extends BaseModel
     {
         return $this->belongsTo(Country::class, 'country_id', 'id');
     }
-
-    public function getStatusAttribute($value): string
-    {
-        return $value == 1 ? _i('Active') : _i('Not Active');
-    }
 }

@@ -77,3 +77,20 @@
         window.location.reload();
     }
 </script>
+
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $(".js-switch").each(function() {
+                new Switchery(this, {
+                    color: '#26B99A',
+                    secondaryColor: '#E74C3C',
+                });
+            });
+
+            // select to select2
+            $('.select2').select2();
+        });
+    </script>
+@endpush

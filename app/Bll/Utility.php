@@ -3,6 +3,7 @@
 namespace App\Bll;
 
 use App\Modules\Country\Models\Country;
+use Illuminate\Support\Collection;
 
 class Utility
 {
@@ -16,14 +17,14 @@ class Utility
             ->get();
         $countries = $countries->map(function ($country) {
             return [
-                'id' => $country->id,
+                'id' => $country->__get('id'),
                 'title' => self::getTranslatedValueAdmin($country, 'title'),
             ];
         });
         return $countries;
     }
 
-    public static function getTranslatedValueAdmin($item, $key)
+    public static function getTranslatedValueAdmin($item, $key): ?string
     {
         $value = $item->Data->where('lang_id', Lang::getAdminLangId())->first();
 
