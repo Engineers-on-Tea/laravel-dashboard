@@ -10,7 +10,7 @@ class CityController extends DashboardController
 {
     public function __construct()
     {
-        $this->config = require_once(app_path('Modules/City/config/CityConfig.php'));
+        $this->config = require_once(app_path('Modules/City/config.php'));
 
         $this->model = $this->config['baseModel'];
         $this->dataModel = $this->config['dataModel'];
