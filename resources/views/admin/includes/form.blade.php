@@ -3,30 +3,30 @@
     @csrf
     @method($method)
     @foreach ($columns as $input)
-        @if ($input['showInForm'])
-            @php
-                $required = $input['required'] ? 'required' : '';
-                $disabled = $input['editable'] == false ? 'disabled' : '';
+        @php
+            $required = $input['required'] ? 'required' : '';
+            $disabled = $input['editable'] == false ? 'disabled' : '';
 
-                $value = '';
-                if (isset($item)) {
-                    if ($input['model'] == 'base') {
-                        $value = $item->__get($input['name']);
-                    } elseif ($input['model'] == 'data') {
-                        $value = \App\Bll\Utility::getTranslatedValueAdmin($item, $input['name']);
-                    } elseif ($input['model'] == 'parentData') {
-                        $parent = $item->Parent;
-                        $value = $item->__get($input['name']);
-                    }
+            $value = '';
+            if (isset($item)) {
+                if ($input['model'] == 'base') {
+                    $value = $item->__get($input['name']);
+                } elseif ($input['model'] == 'data') {
+                    $value = \App\Bll\Utility::getTranslatedValueAdmin($item, $input['name']);
+                } elseif ($input['model'] == 'parentData') {
+                    $parent = $item->Parent;
+                    $value = $item->__get($input['name']);
                 }
+            }
 
-                $data = [
-                    'input' => $input,
-                    'value' => $value,
-                    'required' => $required,
-                    'disabled' => $disabled,
-                ];
-            @endphp
+            $data = [
+                'input' => $input,
+                'value' => $value,
+                'required' => $required,
+                'disabled' => $disabled,
+            ];
+        @endphp
+        @if ($input['showInForm'])
             <div class="form-group row">
                 @if ($input['type'] != 'hidden')
                     <div class="col-sm-2 my-1">
