@@ -1,17 +1,24 @@
 <?php
 
+use App\Bll\Constants;
+use App\Bll\Utility;
+use App\Modules\City\Models\City;
+use App\Modules\City\Models\CityData;
+use App\Modules\Country\Models\Country;
+use App\Modules\Country\Models\CountryData;
+
 return [
-    'baseModel' => \App\Modules\City\Models\City::query(),
-    'dataModel' => \App\Modules\City\Models\CityData::query(),
-    'parentModel' => \App\Modules\Country\Models\Country::query(),
-    'parentDataModel' => \App\Modules\Country\Models\CountryData::query(),
+    'baseModel' => City::query(),
+    'dataModel' => CityData::query(),
+    'parentModel' => Country::query(),
+    'parentDataModel' => CountryData::query(),
     'allow_edit' => true,
     'base_route' => route('dashboard.city.index'),
     'route' => 'city',
     'title' => _i('Cities'),
     'createTitle' => _i('Create City'),
     'editTitle' => _i('Edit City'),
-    'uploads' => \App\Bll\Constants::CityPath,
+    'uploads' => Constants::CityPath,
     'columns' => [
         [
             'name' => 'id',
@@ -44,7 +51,7 @@ return [
             'editable' => true,
             'searchable' => true,
             'sortable' => true,
-            'data' => \App\Bll\Utility::getDashboardCountries(),
+            'data' => Utility::getDashboardCountries(),
             'placeholder' => _i('Select Country'),
             'required' => true,
             'showInForm' => true,
@@ -107,6 +114,18 @@ return [
                 'delete' => 'admin.components.buttons.delete',
             ],
             'showInForm' => false,
+        ]
+    ],
+    'validation' => [
+        'rules' => [
+            'title' => 'required|string|max:255|min:3',
+            'country_id' => 'required|exists:countries,id',
+            'lang_id' => 'required|integer',
+        ],
+        'messages' => [
+            'title.required' => _i('Title is required'),
+            'country_id.required' => _i('Country is required'),
+            'country_id.exists' => _i('Country does not exists'),
         ]
     ]
 ];

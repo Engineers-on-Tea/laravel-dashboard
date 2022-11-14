@@ -3,29 +3,43 @@
 namespace App\Modules\Admin\Controllers;
 
 use App\Bll\Lang;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Modules\Admin\Models\Language;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
-    protected $columns = [];
+    protected array $columns = [];
 
-    protected $model = null;
-    protected $dataModel = null;
-    protected $parentModel = null;
-    protected $parentDataModel = null;
+    protected Model|null $model = null;
+    protected Model|null $dataModel = null;
+    protected Model|null $parentModel = null;
+    protected Model|null $parentDataModel = null;
 
-    protected $allow_edit;
-    protected $route;
+    protected bool $allow_edit;
+    protected string $route;
 
-    protected $config;
+    protected array $config;
 
     public function __construct()
     {
+        $this->model = $this->config['baseModel'];
+        $this->dataModel = $this->config['dataModel'];
+        $this->columns = $this->config['columns'];
+
+        $this->allow_edit = $this->config['allow_edit'];
+        $this->route = $this->config['route'];
     }
 
-    protected function home()
+    protected function home(): Factory|View|Application
     {
         $pageTitle = '';
         return view('admin.home', [
@@ -33,7 +47,11 @@ class DashboardController extends Controller
         ]);
     }
 
-    protected function changeLanguage($language)
+    /**
+     * @param string $language
+     * @return RedirectResponse
+     */
+    protected function changeLanguage(string $language): RedirectResponse
     {
         $lang = Language::query()
             ->findOrFail($language);
@@ -45,7 +63,11 @@ class DashboardController extends Controller
         return redirect()->back();
     }
 
-    protected function index(Request $request)
+    /**
+     * @param Request $request
+     * @return Application|Factory|View
+     */
+    protected function index(Request $request): View|Factory|Application
     {
         $content = $this->model;
 
@@ -79,7 +101,10 @@ class DashboardController extends Controller
         }
     }
 
-    protected function create(Request $request)
+    /**
+     * @return Application|Factory|View
+     */
+    protected function create(): View|Factory|Application
     {
         $data = [
             'pageTitle' => $this->config['createTitle'],
@@ -95,30 +120,33 @@ class DashboardController extends Controller
         return view('admin.create', $data);
     }
 
-    protected function store(Request $request)
+    protected function store(Request $request): JsonResponse
     {
-        // filter column names from colums having model base
-        $baseColums = [];
-        foreach ($this->columns as $key => $column) {
-            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable'] == true) {
-                $baseColums[] = $column['name'];
+        $validate = $this->validateRequest($request);
+        if ($validate['fail']) return response()->json($validate['response'], 422);
+
+        // filter column names from columns having model base
+        $baseColumns = [];
+        foreach ($this->columns as $column) {
+            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable']) {
+                $baseColumns[] = $column['name'];
             }
         }
-        $newBase = $this->model->create($request->only($baseColums));
+        $newBase = $this->model->create($request->only($baseColumns));
 
-        // get column names from colums having model data
-        $dataColums = [];
-        foreach ($this->columns as $key => $column) {
-            if ($column['model'] == 'data' && $column['editable'] == true) {
-                $dataColums[] = $column['name'];
+        // get column names from columns having model data
+        $dataColumns = [];
+        foreach ($this->columns as $column) {
+            if ($column['model'] == 'data' && $column['editable']) {
+                $dataColumns[] = $column['name'];
             }
         }
         // append master id to request
         $request->merge(['master_id' => $newBase->id, 'lang_id' => Lang::getAdminLangId()]);
-        array_push($dataColums, 'master_id');
-        array_push($dataColums, 'lang_id');
+        $dataColumns[] = 'master_id';
+        $dataColumns[] = 'lang_id';
 
-        $newData = $this->dataModel->create($request->only($dataColums));
+        $this->dataModel->create($request->only($dataColumns));
 
         if ($request->has('image')) {
             $this->saveImage($request->file('image'), $newBase->id);
@@ -129,17 +157,38 @@ class DashboardController extends Controller
             'message' => _i('New record created successfully'),
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
-    protected function show(Request $request)
+    /**
+     * @param Request $request
+     * @return Application|Factory|View
+     */
+    protected function show(Request $request): View|Factory|Application
     {
         $item = $this->model->with([
             'Data'
         ])->findOrFail($request->input('id'));
+
+        $data = [
+            'pageTitle' => $this->config['showTitle'],
+            'route' => $this->route,
+            'method' => 'GET',
+            'action' => 'show',
+            'item' => $item,
+            'baseRoute' => $this->config['base_route'],
+            'baseTitle' => $this->config['title'],
+            'columns' => $this->columns,
+        ];
+
+        return view('admin.show', $data);
     }
 
-    protected function edit($id)
+    /**
+     * @param $id
+     * @return Application|Factory|View
+     */
+    protected function edit($id): View|Factory|Application
     {
         $item = $this->model->with([
             'Data'
@@ -159,40 +208,51 @@ class DashboardController extends Controller
         return view('admin.edit', $data);
     }
 
-    protected function update(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    protected function update(Request $request): JsonResponse
     {
+        $validate = $this->validateRequest($request);
+        if ($validate['fail']) return response()->json($validate['response'], 422);
+
         $item = $this->model->findOrFail($request->input('id'));
 
-        // filter column names from colums having model base
-        $baseColums = [];
-        foreach ($this->columns as $key => $column) {
-            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable'] == true) {
-                $baseColums[] = $column['name'];
+        // filter column names from columns having model base
+        $baseColumns = [];
+        foreach ($this->columns as $column) {
+            if (isset($column['model']) && ($column['model'] == 'base' || $column['model'] == 'parentData') && $column['editable']) {
+                $baseColumns[] = $column['name'];
             }
         }
-        $item->update($request->only($baseColums));
+        $item->update($request->only($baseColumns));
 
-        // get column names from colums having model data
-        $dataColums = [];
-        foreach ($this->columns as $key => $column) {
-            if ($column['model'] == 'data' && $column['editable'] == true) {
-                $dataColums[] = $column['name'];
+        // get column names from columns having model data
+        $dataColumns = [];
+        foreach ($this->columns as $column) {
+            if ($column['model'] == 'data' && $column['editable']) {
+                $dataColumns[] = $column['name'];
             }
         }
         $this->dataModel->updateOrCreate([
             'master_id' => $item->id,
             'lang_id' => Lang::getAdminLangId()
-        ], $request->only($dataColums));
+        ], $request->only($dataColumns));
 
         $response = [
             'title' => _i('Success'),
             'message' => _i('Record updated successfully'),
         ];
 
-        return response()->json($response, 200);
+        return response()->json($response);
     }
 
-    protected function destroy($id)
+    /**
+     * @param $id
+     * @return JsonResponse
+     */
+    protected function destroy($id): JsonResponse
     {
         $statusCode = 200;
         $response = [
@@ -202,7 +262,7 @@ class DashboardController extends Controller
         ];
         try {
             $this->model->where('id', $id)->delete();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $statusCode = 500;
             $response = [
                 'title' => _i('Error'),
@@ -214,7 +274,11 @@ class DashboardController extends Controller
         return response()->json(['data' => $response], $statusCode);
     }
 
-    protected function restore(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    protected function restore(Request $request): JsonResponse
     {
         $statusCode = 200;
         $response = [
@@ -223,7 +287,7 @@ class DashboardController extends Controller
         ];
         try {
             $this->model->where('id', $request->get('id'))->restore();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $statusCode = 500;
             $response = [
                 'message' => _i('Error Restoring'),
@@ -234,7 +298,11 @@ class DashboardController extends Controller
         return response()->json($response, $statusCode);
     }
 
-    protected function forceDelete(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    protected function forceDelete(Request $request): JsonResponse
     {
         $statusCode = 200;
         $response = [
@@ -243,7 +311,7 @@ class DashboardController extends Controller
         ];
         try {
             $this->model->where('id', $request->get('id'))->forceDelete();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $statusCode = 500;
             $response = [
                 'message' => _i('Error Deleting'),
@@ -254,7 +322,11 @@ class DashboardController extends Controller
         return response()->json($response, $statusCode);
     }
 
-    protected function getTranslation(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    protected function getTranslation(Request $request): JsonResponse
     {
         $lang = $request->input('lang');
         $id = $request->input('id');
@@ -268,7 +340,11 @@ class DashboardController extends Controller
         ]);
     }
 
-    protected function setTranslation(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    protected function setTranslation(Request $request): JsonResponse
     {
         $lang = $request->input('lang');
         $id = $request->input('id');
@@ -286,6 +362,11 @@ class DashboardController extends Controller
         return response()->json(['message' => _i('Translation saved successfully')]);
     }
 
+    /**
+     * @param $file
+     * @param $id
+     * @return void
+     */
     private function saveImage($file, $id)
     {
         $path = $this->config['uploads'];
@@ -301,5 +382,37 @@ class DashboardController extends Controller
         $file->move($path, $fileName);
 
         $this->model->where('id', $id)->update(['image' => $fileName]);
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    private function validateRequest(Request $request): array
+    {
+        $validation = $this->config['validation'];
+        $validator = Validator::make($request->all(), $validation['rules'], $validation['messages']);
+
+        $res = [
+            'fail' => false,
+            'response' => [],
+        ];
+
+        if ($validator->fails()) {
+            $errors = '';
+            foreach ($validator->errors()->all() as $error) {
+                $errors .= $error . ', ';
+            }
+
+            $response = [
+                'title' => _i('Error'),
+                'message' => $errors,
+            ];
+
+            $res['fail'] = true;
+            $res['response'] = $response;
+        }
+
+        return $res;
     }
 }

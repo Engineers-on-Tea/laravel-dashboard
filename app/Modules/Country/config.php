@@ -1,15 +1,19 @@
 <?php
 
+use App\Bll\Constants;
+use App\Modules\Country\Models\Country;
+use App\Modules\Country\Models\CountryData;
+
 return [
-    'baseModel' => \App\Modules\Country\Models\Country::query(),
-    'dataModel' => \App\Modules\Country\Models\CountryData::query(),
+    'baseModel' => Country::query(),
+    'dataModel' => CountryData::query(),
     'allow_edit' => true,
     'base_route' => route('dashboard.country.index'),
     'route' => 'country',
     'title' => _i('Countries'),
     'createTitle' => _i('Create Country'),
     'editTitle' => _i('Edit Country'),
-    'uploads' => \App\Bll\Constants::CountryPath,
+    'uploads' => Constants::CountryPath,
     'columns' => [
         [
             'name' => 'id',
@@ -122,6 +126,21 @@ return [
                 'delete' => 'admin.components.buttons.delete',
             ],
             'showInForm' => false,
+        ]
+    ],
+    'validation' => [
+        'rules' => [
+            'title' => 'required|string|max:255|min:3',
+            'code' => 'required|string|max:10|min:2|unique:countries,code',
+            'dialing_code' => 'required|string|max:10|min:2|unique:countries,dialing_code',
+            'lang_id' => 'required|integer',
+        ],
+        'messages' => [
+            'title.required' => _i('Title is required'),
+            'code.required' => _i('Code is required'),
+            'code.unique' => _i('Code is already exists'),
+            'dialing_code.required' => _i('Dialing code is required'),
+            'dialing_code.unique' => _i('Dialing code is already exists'),
         ]
     ]
 ];

@@ -73,4 +73,18 @@ return [
             ],
         ],
     ],
+    'validation' => [
+        'rules' => [
+            'title' => 'required|string|max:255|min:3',
+            'description' => 'required|string|max:255|min:3',
+            'image' => 'required|image|mimetypes:image/jpeg,image/png,image/gif,image/jpg',
+            'lang_id' => 'required|integer',
+        ],
+        'messages' => [
+            'title.required' => _i('Title is required'),
+            'description.required' => _i('Description is required'),
+            'image.required' => _i('Image is required'),
+            'image.image' => _i('Image is not valid'),
+        ]
+    ]
 ];
