@@ -1,46 +1,54 @@
 <?php
 
+use App\Bll\Constants;
+use App\Modules\Admin\Models\Language;
+
 return [
     'allow_edit' => false,
     'title' => _i('Languages'),
     'route' => 'language',
-    'baseModel' => \App\Modules\Admin\Models\Language::query(),
-    'uploads' => \App\Bll\Constants::LanguagePath,
+    'baseModel' => Language::query(),
+    'uploads' => Constants::LanguagePath,
     'columns' => [
-        'id' => [
+        [
             'label' => _i('ID'),
+            'name' => 'id',
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
             'editable' => false,
             'model' => 'base',
         ],
-        'title' => [
+        [
             'label' => _i('Title'),
+            'name' => 'title',
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
             'editable' => true,
             'model' => 'base',
         ],
-        'code' => [
+        [
             'label' => _i('Code'),
+            'name' => 'code',
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
             'editable' => true,
             'model' => 'base',
         ],
-        'is_default' => [
+        [
             'label' => _i('Default'),
+            'name' => 'is_default',
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
             'editable' => true,
             'model' => 'base',
         ],
-        'created_at' => [
+        [
             'label' => _i('Created At'),
+            'name' => 'created_at',
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,

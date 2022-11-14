@@ -3,10 +3,13 @@
 namespace App\Bll;
 
 use App\Modules\Admin\Models\Language;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Session;
 
 class Lang
 {
-    public static function getAll()
+    public static function getAll(): Collection|array
     {
         return Language::query()
             ->get();
@@ -14,7 +17,7 @@ class Lang
 
     public static function getAdminLang()
     {
-        $lang = session()->get('admin_lang');
+        $lang = Session::get('admin_lang');
         if (!$lang) {
             $lang = Language::query()
                 ->where('is_default', 1)
@@ -25,34 +28,46 @@ class Lang
                     ->first();
             }
 
-            session()->put('admin_lang', $lang);
+            Session::put('admin_lang', $lang);
         }
         return $lang;
     }
 
-    public static function getAdminLangCode()
+    /**
+     * @throws Exception
+     */
+    public static function getAdminLangCode(): string
     {
-        return self::getAdminLang()->code;
+        return self::getAdminLang()->__get('code');
     }
 
-    public static function getAdminLangId()
+    /**
+     * @throws Exception
+     */
+    public static function getAdminLangId(): int
     {
-        return self::getAdminLang()->id;
+        return self::getAdminLang()->__get('id');
     }
 
-    public static function getAdminLangTitle()
+    /**
+     * @throws Exception
+     */
+    public static function getAdminLangTitle(): string
     {
-        return self::getAdminLang()->title;
+        return self::getAdminLang()->__get('title');
     }
 
-    public static function getAdminLangDir()
+    /**
+     * @throws Exception
+     */
+    public static function getAdminLangDir(): string
     {
-        return self::getAdminLang()->direction;
+        return self::getAdminLang()->__get('direction');
     }
 
     public static function getLang()
     {
-        $lang = session()->get('lang');
+        $lang = Session::get('lang');
         if (!$lang) {
             $lang = Language::query()
                 ->where('is_default', 1)
@@ -63,28 +78,40 @@ class Lang
                     ->first();
             }
 
-            session()->put('lang', $lang);
+            Session::put('lang', $lang);
         }
         return $lang;
     }
 
-    public static function getLangCode()
+    /**
+     * @throws Exception
+     */
+    public static function getLangCode(): string
     {
-        return self::getLang()->code;
+        return self::getLang()->__get('code');
     }
 
-    public static function getLangId()
+    /**
+     * @throws Exception
+     */
+    public static function getLangId(): int
     {
-        return self::getLang()->id;
+        return self::getLang()->__get('id');
     }
 
-    public static function getLangTitle()
+    /**
+     * @throws Exception
+     */
+    public static function getLangTitle(): string
     {
-        return self::getLang()->title;
+        return self::getLang()->__get('title');
     }
 
-    public static function getLangDir()
+    /**
+     * @throws Exception
+     */
+    public static function getLangDir(): string
     {
-        return self::getLang()->direction;
+        return self::getLang()->__get('direction');
     }
 }

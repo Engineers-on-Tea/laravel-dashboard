@@ -7,36 +7,40 @@ use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Modules\Admin\Models\Language;
 use Illuminate\Support\Facades\Validator;
+use JetBrains\PhpStorm\NoReturn;
 
 class DashboardController extends Controller
 {
     protected array $columns = [];
 
-    protected Model|null $model = null;
-    protected Model|null $dataModel = null;
-    protected Model|null $parentModel = null;
-    protected Model|null $parentDataModel = null;
+    protected mixed $model = null;
+    protected mixed $dataModel = null;
+    protected mixed $parentModel = null;
+    protected mixed $parentDataModel = null;
 
     protected bool $allow_edit;
     protected string $route;
 
     protected array $config;
 
-    public function __construct()
+    #[NoReturn] public function __construct()
     {
-        $this->model = $this->config['baseModel'];
-        $this->dataModel = $this->config['dataModel'];
-        $this->columns = $this->config['columns'];
+        if (isset($this->config)) {
+            $this->model = $this->config['baseModel'];
+            if (isset($this->config['dataModel'])) {
+                $this->dataModel = $this->config['dataModel'];
+            }
+            $this->columns = $this->config['columns'];
 
-        $this->allow_edit = $this->config['allow_edit'];
-        $this->route = $this->config['route'];
+            $this->allow_edit = $this->config['allow_edit'];
+            $this->route = $this->config['route'];
+        }
     }
 
     protected function home(): Factory|View|Application
@@ -120,6 +124,9 @@ class DashboardController extends Controller
         return view('admin.create', $data);
     }
 
+    /**
+     * @throws Exception
+     */
     protected function store(Request $request): JsonResponse
     {
         $validate = $this->validateRequest($request);
@@ -211,6 +218,7 @@ class DashboardController extends Controller
     /**
      * @param Request $request
      * @return JsonResponse
+     * @throws Exception
      */
     protected function update(Request $request): JsonResponse
     {
@@ -266,7 +274,7 @@ class DashboardController extends Controller
             $statusCode = 500;
             $response = [
                 'title' => _i('Error'),
-                'message' => _i('Error Deleting'),
+                'message' => _i('Error Deleting') . ' ' . $e->getMessage(),
                 'fail' => true,
             ];
         }
@@ -290,7 +298,7 @@ class DashboardController extends Controller
         } catch (Exception $e) {
             $statusCode = 500;
             $response = [
-                'message' => _i('Error Restoring'),
+                'message' => _i('Error Restoring') . ' ' . $e->getMessage(),
                 'fail' => true,
             ];
         }
@@ -314,7 +322,7 @@ class DashboardController extends Controller
         } catch (Exception $e) {
             $statusCode = 500;
             $response = [
-                'message' => _i('Error Deleting'),
+                'message' => _i('Error Deleting') . ' ' . $e->getMessage(),
                 'fail' => true,
             ];
         }
@@ -367,7 +375,7 @@ class DashboardController extends Controller
      * @param $id
      * @return void
      */
-    private function saveImage($file, $id)
+    private function saveImage($file, $id): void
     {
         $path = $this->config['uploads'];
 

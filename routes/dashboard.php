@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Admin\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Modules\Blog\Controllers\BlogController;
 use App\Modules\City\Controllers\CityController;
@@ -22,6 +23,12 @@ use App\Modules\BlogCategory\Controllers\BlogCategoryController;
 Route::name('dashboard.')
     ->middleware(['set.locale'])
     ->group(function () {
+        Route::get('/login', [AuthController::class, 'showLoginForm'])
+            ->name('login');
+
+        Route::post('/login', [AuthController::class, 'login'])
+            ->name('login');
+
         Route::get('/', [DashboardController::class, 'home'])
             ->name('home');
 

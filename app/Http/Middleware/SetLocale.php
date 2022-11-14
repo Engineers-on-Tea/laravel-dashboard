@@ -4,9 +4,11 @@ namespace App\Http\Middleware;
 
 use App\Bll\Lang;
 use Closure;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Anubixo\LaravelGettext\Facades\LaravelGettext;
 
@@ -18,6 +20,7 @@ class SetLocale
      * @param Request $request
      * @param Closure(Request): (Response|RedirectResponse) $next
      * @return Response|RedirectResponse
+     * @throws Exception
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
@@ -30,7 +33,7 @@ class SetLocale
             $code = Lang::getAdminLangCode();
         }
 
-        app()->setLocale($code);
+        App::setLocale($code);
 
         LaravelGettext::setLocale($code);
         Session::put('locale', $code);
