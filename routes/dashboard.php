@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\Admin\Controllers\AuthController;
+use App\Modules\Admin\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Modules\Blog\Controllers\BlogController;
 use App\Modules\City\Controllers\CityController;
@@ -24,69 +25,78 @@ Route::name('dashboard.')
     ->middleware(['set.locale'])
     ->group(function () {
         Route::get('/login', [AuthController::class, 'showLoginForm'])
-            ->name('login');
+            ->name('login.show');
 
         Route::post('/login', [AuthController::class, 'login'])
-            ->name('login');
+            ->name('login.submit');
 
-        Route::get('/', [DashboardController::class, 'home'])
-            ->name('home');
+        Route::middleware(['auth'])
+            ->group(function () {
+                Route::get('/', [DashboardController::class, 'home'])
+                    ->name('home');
 
-        Route::get('/change-language/{language}', [DashboardController::class, 'changeLanguage'])
-            ->name('change.lang');
+                Route::post('logout', [AuthController::class, 'logout'])
+                    ->name('logout');
 
-        // Country Routes
-        Route::resource('country', CountryController::class)
-            ->except(['show']);
+                Route::get('change-language/{language}', [DashboardController::class, 'changeLanguage'])
+                    ->name('change.lang');
 
-        Route::delete('country/delete/{id}', [CountryController::class, 'forceDelete'])
-            ->name('country.force.delete');
+                // User Routes
+                Route::resource('user', UserController::class);
 
-        Route::get('country/get_translation', [CountryController::class, 'getTranslation'])
-            ->name('country.get_translation');
+                // Country Routes
+                Route::resource('country', CountryController::class)
+                    ->except(['show']);
 
-        Route::post('country/translation', [CountryController::class, 'setTranslation'])
-            ->name('country.translation');
+                Route::delete('country/delete/{id}', [CountryController::class, 'forceDelete'])
+                    ->name('country.force.delete');
 
-        // City Routes
-        Route::resource('city', CityController::class)
-            ->except(['show']);
+                Route::get('country/get_translation', [CountryController::class, 'getTranslation'])
+                    ->name('country.get_translation');
 
-        Route::delete('city/delete/{id}', [CityController::class, 'forceDelete'])
-            ->name('city.force.delete');
+                Route::post('country/translation', [CountryController::class, 'setTranslation'])
+                    ->name('country.translation');
 
-        Route::get('city/get_translation', [CityController::class, 'getTranslation'])
-            ->name('city.get_translation');
+                // City Routes
+                Route::resource('city', CityController::class)
+                    ->except(['show']);
 
-        Route::post('city/translation', [CityController::class, 'setTranslation'])
-            ->name('city.translation');
+                Route::delete('city/delete/{id}', [CityController::class, 'forceDelete'])
+                    ->name('city.force.delete');
 
-        // Language Routes
-        Route::resource('language', LanguageController::class)
-            ->only(['index']);
+                Route::get('city/get_translation', [CityController::class, 'getTranslation'])
+                    ->name('city.get_translation');
 
-        // BlogCategory Routes
-        Route::resource('blog-category', BlogCategoryController::class)
-            ->except(['show']);
+                Route::post('city/translation', [CityController::class, 'setTranslation'])
+                    ->name('city.translation');
 
-        Route::delete('blog-category/delete/{id}', [BlogCategoryController::class, 'forceDelete'])
-            ->name('blog-category.force.delete');
+                // Language Routes
+                Route::resource('language', LanguageController::class)
+                    ->only(['index']);
 
-        Route::get('blog-category/get_translation', [BlogCategoryController::class, 'getTranslation'])
-            ->name('blog-category.get_translation');
+                // BlogCategory Routes
+                Route::resource('blog-category', BlogCategoryController::class)
+                    ->except(['show']);
 
-        Route::post('blog-category/translation', [BlogCategoryController::class, 'setTranslation'])
-            ->name('blog-category.translation');
+                Route::delete('blog-category/delete/{id}', [BlogCategoryController::class, 'forceDelete'])
+                    ->name('blog-category.force.delete');
 
-        // Blog Routes
-        Route::resource('blog', BlogController::class);
+                Route::get('blog-category/get_translation', [BlogCategoryController::class, 'getTranslation'])
+                    ->name('blog-category.get_translation');
 
-        Route::delete('blog/delete/{id}', [BlogController::class, 'forceDelete'])
-            ->name('blog.force.delete');
+                Route::post('blog-category/translation', [BlogCategoryController::class, 'setTranslation'])
+                    ->name('blog-category.translation');
 
-        Route::get('blog/get_translation', [BlogController::class, 'getTranslation'])
-            ->name('blog.get_translation');
+                // Blog Routes
+                Route::resource('blog', BlogController::class);
 
-        Route::post('blog/translation', [BlogController::class, 'setTranslation'])
-            ->name('blog.translation');
+                Route::delete('blog/delete/{id}', [BlogController::class, 'forceDelete'])
+                    ->name('blog.force.delete');
+
+                Route::get('blog/get_translation', [BlogController::class, 'getTranslation'])
+                    ->name('blog.get_translation');
+
+                Route::post('blog/translation', [BlogController::class, 'setTranslation'])
+                    ->name('blog.translation');
+            });
     });

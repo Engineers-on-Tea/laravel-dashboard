@@ -16,11 +16,13 @@ class UserSeeder extends Seeder
     {
         User::query()
             ->create([
-                'name' => 'Admin',
-                'email' => 'admin@system.com',
+                'id' => 1,
+                'name' => 'Super Admin',
+                'email' => 'admin@email.com',
                 'password' => bcrypt('123456'),
                 'email_verified_at' => now(),
                 'guard_name' => 'web',
+                'active' => true,
             ]);
     }
 }

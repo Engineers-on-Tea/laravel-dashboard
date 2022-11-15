@@ -1,32 +1,32 @@
 <form action="{{ route('dashboard.' . $route . '.' . $action, isset($item) ? $item->__get('id') : null) }}"
-    method="{{ $method }}" data-form="{{ $action }}">
+      method="{{ $method }}" data-form="{{ $action }}">
     @csrf
     @method($method)
     @foreach ($columns as $input)
-        @php
-            $required = $input['required'] ? 'required' : '';
-            $disabled = $input['editable'] == false ? 'disabled' : '';
-
-            $value = '';
-            if (isset($item)) {
-                if ($input['model'] == 'base') {
-                    $value = $item->__get($input['name']);
-                } elseif ($input['model'] == 'data') {
-                    $value = \App\Bll\Utility::getTranslatedValueAdmin($item, $input['name']);
-                } elseif ($input['model'] == 'parentData') {
-                    $parent = $item->Parent;
-                    $value = $item->__get($input['name']);
-                }
-            }
-
-            $data = [
-                'input' => $input,
-                'value' => $value,
-                'required' => $required,
-                'disabled' => $disabled,
-            ];
-        @endphp
         @if ($input['showInForm'])
+            @php
+                $required = $input['required'] ? 'required' : '';
+                $disabled = $input['editable'] == false ? 'disabled' : '';
+
+                $value = '';
+                if (isset($item)) {
+                    if ($input['model'] == 'base') {
+                        $value = $item->__get($input['name']);
+                    } elseif ($input['model'] == 'data') {
+                        $value = \App\Bll\Utility::getTranslatedValueAdmin($item, $input['name']);
+                    } elseif ($input['model'] == 'parentData') {
+                        $parent = $item->Parent;
+                        $value = $item->__get($input['name']);
+                    }
+                }
+
+                $data = [
+                    'input' => $input,
+                    'value' => $value,
+                    'required' => $required,
+                    'disabled' => $disabled,
+                ];
+            @endphp
             <div class="form-group row">
                 @if ($input['type'] != 'hidden')
                     <div class="col-sm-2 my-1">
@@ -42,28 +42,28 @@
                     @switch($input['type'])
                         @case('select')
                             @include('admin.components.form.select', $data)
-                        @break
+                            @break
 
                         @case('textarea')
                             @include('admin.components.form.textarea', $data)
-                        @break
+                            @break
 
                         @case('image')
                         @case('file')
                             @include('admin.components.form.file', $data)
-                        @break
+                            @break
 
                         @case('checkbox')
                             @include('admin.components.form.checkbox', $data)
-                        @break
+                            @break
 
                         @case('radio')
                             @include('admin.components.form.radio', $data)
-                        @break
+                            @break
 
                         @case('hidden')
                             @include('admin.components.form.hidden', $data)
-                        @break
+                            @break
 
                         @case('number')
                         @case('email')
@@ -73,7 +73,7 @@
 
                         @case('password')
                             @include('admin.components.form.input', $data)
-                        @break
+                            @break
 
                         @default
                             @include('admin.components.form.input', $data)

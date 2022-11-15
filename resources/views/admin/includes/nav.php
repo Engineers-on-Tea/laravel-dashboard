@@ -12,6 +12,12 @@ return [
         'icon' => 'icofont-ui-settings',
         'route' => 'javascript:void(0)',
         'children' => [
+            'user' => [
+                'label' => _i('Users'),
+                'icon' => 'icon-user',
+                'route' => route('dashboard.user.index'),
+                'children' => [],
+            ],
             'language' => [
                 'label' => _i('Languages'),
                 'icon' => 'icon-flag',

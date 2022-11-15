@@ -13,4 +13,6 @@ class Constants
     public const CityPath = 'uploads' . DIRECTORY_SEPARATOR . 'city' . DIRECTORY_SEPARATOR;
 
     public const LanguagePath = 'uploads' . DIRECTORY_SEPARATOR . 'language' . DIRECTORY_SEPARATOR;
+
+    public const UserPath = 'uploads' . DIRECTORY_SEPARATOR . 'user' . DIRECTORY_SEPARATOR;
 }

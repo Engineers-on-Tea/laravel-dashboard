@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@php
+    use App\Bll\Utility;
+    $settings = Utility::getDefaultSettings();
+@endphp
 <head>
-    <title>@yield('title') | {{ _i('Login') }}</title>
+    <title>{{ _i('Login') }} | {{ $settings['title'] }}</title>
     @include('admin.layouts.meta')
     @include('admin.layouts.styles')
     @stack('css')
@@ -17,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                @yield('contents')
+                @yield('content')
             </div>
             <!-- end of col-sm-12 -->
         </div>

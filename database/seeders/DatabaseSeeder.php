@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(LanguagesSeeder::class);
-        $this->call(CountriesSeeder::class);
-        $this->call(CitiesSeeder::class);
+        $this->call([
+            UserSeeder::class,
+            LanguagesSeeder::class,
+            CountriesSeeder::class,
+            CitiesSeeder::class,
+            SettingsSeeder::class,
+        ]);
     }
 }

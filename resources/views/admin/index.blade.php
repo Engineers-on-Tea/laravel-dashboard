@@ -14,7 +14,7 @@
                         @if ($allowEdit)
                             <a href="{{ route('dashboard.' . $route . '.create') }}"
                                 class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger">
-                                <i class="fa fa-plus m-r-5"></i> {{ _I('Create new') }}
+                                <i class="fa fa-plus m-r-5"></i> {{ $createTitle }}
                             </a>
                         @endif
                     </div>

@@ -93,6 +93,7 @@ class DashboardController extends Controller
             'content' => $content,
             'columns' => $columns,
             'pageTitle' => $pageTitle,
+            'createTitle' => $this->config['createTitle'] ?? '',
             'allowEdit' => $this->allow_edit,
             'route' => $this->route,
             'uploads' => $this->config['uploads'],
@@ -141,19 +142,21 @@ class DashboardController extends Controller
         }
         $newBase = $this->model->create($request->only($baseColumns));
 
-        // get column names from columns having model data
-        $dataColumns = [];
-        foreach ($this->columns as $column) {
-            if ($column['model'] == 'data' && $column['editable']) {
-                $dataColumns[] = $column['name'];
+        if ($this->dataModel != null) {
+            // get column names from columns having model data
+            $dataColumns = [];
+            foreach ($this->columns as $column) {
+                if ($column['model'] == 'data' && $column['editable']) {
+                    $dataColumns[] = $column['name'];
+                }
             }
-        }
-        // append master id to request
-        $request->merge(['master_id' => $newBase->id, 'lang_id' => Lang::getAdminLangId()]);
-        $dataColumns[] = 'master_id';
-        $dataColumns[] = 'lang_id';
+            // append master id to request
+            $request->merge(['master_id' => $newBase->id, 'lang_id' => Lang::getAdminLangId()]);
+            $dataColumns[] = 'master_id';
+            $dataColumns[] = 'lang_id';
 
-        $this->dataModel->create($request->only($dataColumns));
+            $this->dataModel->create($request->only($dataColumns));
+        }
 
         if ($request->has('image')) {
             $this->saveImage($request->file('image'), $newBase->id);
@@ -162,6 +165,7 @@ class DashboardController extends Controller
         $response = [
             'title' => _i('Success'),
             'message' => _i('New record created successfully'),
+            'fail' => false,
         ];
 
         return response()->json($response);
@@ -251,6 +255,7 @@ class DashboardController extends Controller
         $response = [
             'title' => _i('Success'),
             'message' => _i('Record updated successfully'),
+            'fail' => false,
         ];
 
         return response()->json($response);

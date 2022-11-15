@@ -99,7 +99,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="auth-normal-sign-in.htm">
+                                <a href="{{ route('dashboard.logout') }}" data-button="logout">
                                     <i class="icofont icofont-sign-out"></i> {{ _i('Logout') }}
                                 </a>
                             </li>

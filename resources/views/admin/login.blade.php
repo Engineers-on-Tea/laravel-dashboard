@@ -4,8 +4,9 @@
 
 @section('content')
     <!-- Authentication card start -->
-
-    <form class="md-float-material form-material">
+    <form class="md-float-material form-material" action="{{ route('dashboard.login.submit') }}" method="post">
+        @csrf
+        @method('POST')
         <div class="text-center">
             <img src="{{asset('admin_dashboard/assets/images/logo.png')}}" alt="logo.png">
         </div>
@@ -13,11 +14,11 @@
             <div class="card-block">
                 <div class="row m-b-20">
                     <div class="col-md-12">
-                        <h3 class="text-center">{{_i('Sign In')}}</h3>
+                        <h3 class="text-center">{{_i('Sign in')}}</h3>
                     </div>
                 </div>
                 <div class="form-group form-primary">
-                    <input type="text" name="email" class="form-control" required="" placeholder="Your Email Address">
+                    <input type="email" name="email" class="form-control" required placeholder="Your Email Address">
                     <span class="form-bar"></span>
                 </div>
                 <div class="form-group form-primary">
@@ -28,19 +29,16 @@
                     <div class="col-12">
                         <div class="checkbox-fade fade-in-primary d-">
                             <label>
-                                <input type="checkbox" value="">
+                                <input type="checkbox" value="" name="remember">
                                 <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                                 <span class="text-inverse">{{_i('Remember me')}}</span>
                             </label>
                         </div>
-                        {{--                        <div class="forgot-phone text-right f-right">--}}
-                        {{--                            <a href="auth-reset-password.htm" class="text-right f-w-600"> Forgot Password?</a>--}}
-                        {{--                        </div>--}}
                     </div>
                 </div>
                 <div class="row m-t-30">
                     <div class="col-md-12">
-                        <button type="button"
+                        <button type="submit"
                                 class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">
                             {{_i('Sign in')}}
                         </button>
