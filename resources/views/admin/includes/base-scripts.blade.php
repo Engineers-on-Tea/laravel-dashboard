@@ -94,28 +94,30 @@
             $(document).on('click', '[data-button=logout]', function (e) {
                 e.preventDefault();
                 dashboardAxios($(this).attr('href'), 'post', null, function (response) {
-                    // if (response.fail === false) {
-                    //     window.location.href = response.url;
-                    // } else {
-                    //     swalError()
-                    // }
                     let url = response.url;
                     let buttons = {
                         'confirm': {
                             'showConfirmButton': true,
                             'confirmButtonText': "{{ _i('Ok') }}",
                             'confirmButtonColor': '#3085d6',
-                            'callback': function (url) {
-                                window.location.href;
-                            }
+                            'callback': logOut(url),
                         }
                     }
+                    let message = response.message;
+                    let title = response.title;
+                    let icon = 'success';
+
+                    if (response.fail === true) {
+                        icon = 'error';
+                    }
+
+                    swalOptions(title, message, buttons, icon);
                 });
             });
         });
 
         function logOut (url) {
-
+            return window.location.href = url;
         }
     </script>
 @endpush

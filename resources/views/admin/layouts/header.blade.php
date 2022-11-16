@@ -5,7 +5,7 @@
             <a class="mobile-menu" id="mobile-collapse" href="#!">
                 <i class="icofont icofont-navigation-menu"></i>
             </a>
-            <a href="index-1.htm">
+            <a href="{{ route('dashboard.home') }}">
                 <img class="img-fluid" src="{{ asset('admin_dashboard/assets/images/logo.png') }}" alt="Theme-Logo">
             </a>
             <a class="mobile-options">

@@ -3,6 +3,7 @@
 namespace App\Modules\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -49,7 +50,7 @@ class AuthController extends Controller
             $request->session()->invalidate();
 
             $request->session()->regenerateToken();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 'fail' => true,
                 'url' => route('dashboard.login.show'),
