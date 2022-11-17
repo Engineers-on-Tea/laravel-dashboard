@@ -18,7 +18,7 @@ class LanguagesSeeder extends Seeder
             'title' => 'English',
             'code' => 'en',
             'direction' => 'ltr',
-            'flag' => 'flag-icon-gb',
+            'flag' => 'flag-icon-USD',
             'is_default' => true,
         ]);
 
@@ -26,7 +26,7 @@ class LanguagesSeeder extends Seeder
             'title' => 'العربية',
             'code' => 'ar',
             'direction' => 'rtl',
-            'flag' => 'flag-icon-eg',
+            'flag' => 'flag-icon-EGP',
             'is_default' => false,
         ]);
     }
