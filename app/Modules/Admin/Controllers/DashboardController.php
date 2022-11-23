@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
     protected array $config;
 
-    #[NoReturn] public function __construct()
+    public function __construct()
     {
         if (isset($this->config)) {
             $this->model = $this->config['baseModel'];
