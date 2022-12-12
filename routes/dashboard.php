@@ -38,6 +38,10 @@ Route::name('dashboard.')
                 Route::post('logout', [AuthController::class, 'logout'])
                     ->name('logout');
 
+                // Language Routes
+                Route::resource('language', LanguageController::class)
+                    ->only(['index']);
+
                 Route::get('change-language/{language}', [DashboardController::class, 'changeLanguage'])
                     ->name('change.lang');
 
@@ -45,58 +49,67 @@ Route::name('dashboard.')
                 Route::resource('user', UserController::class);
 
                 // Country Routes
-                Route::resource('country', CountryController::class)
-                    ->except(['show']);
+                Route::prefix('country')
+                    ->group(function () {
+                        Route::resource('/', CountryController::class)
+                            ->except(['show']);
 
-                Route::delete('country/delete/{id}', [CountryController::class, 'forceDelete'])
-                    ->name('country.force.delete');
+                        Route::delete('/delete/{id}', [CountryController::class, 'forceDelete'])
+                            ->name('country.force.delete');
 
-                Route::get('country/get_translation', [CountryController::class, 'getTranslation'])
-                    ->name('country.get_translation');
+                        Route::get('/get_translation', [CountryController::class, 'getTranslation'])
+                            ->name('country.get_translation');
 
-                Route::post('country/translation', [CountryController::class, 'setTranslation'])
-                    ->name('country.translation');
+                        Route::post('/translation', [CountryController::class, 'setTranslation'])
+                            ->name('country.translation');
+                    });
 
                 // City Routes
-                Route::resource('city', CityController::class)
-                    ->except(['show']);
+                Route::prefix('city')
+                    ->group(function () {
+                        Route::resource('/', CityController::class)
+                            ->except(['show']);
 
-                Route::delete('city/delete/{id}', [CityController::class, 'forceDelete'])
-                    ->name('city.force.delete');
+                        Route::delete('/delete/{id}', [CityController::class, 'forceDelete'])
+                            ->name('city.force.delete');
 
-                Route::get('city/get_translation', [CityController::class, 'getTranslation'])
-                    ->name('city.get_translation');
+                        Route::get('/get_translation', [CityController::class, 'getTranslation'])
+                            ->name('city.get_translation');
 
-                Route::post('city/translation', [CityController::class, 'setTranslation'])
-                    ->name('city.translation');
-
-                // Language Routes
-                Route::resource('language', LanguageController::class)
-                    ->only(['index']);
+                        Route::post('/translation', [CityController::class, 'setTranslation'])
+                            ->name('city.translation');
+                    });
 
                 // BlogCategory Routes
-                Route::resource('blog-category', BlogCategoryController::class)
-                    ->except(['show']);
+                Route::prefix('blog-category')
+                    ->group(function () {
+                        Route::resource('/', BlogCategoryController::class)
+                            ->except(['show']);
 
-                Route::delete('blog-category/delete/{id}', [BlogCategoryController::class, 'forceDelete'])
-                    ->name('blog-category.force.delete');
+                        Route::delete('/delete/{id}', [BlogCategoryController::class, 'forceDelete'])
+                            ->name('blog-category.force.delete');
 
-                Route::get('blog-category/get_translation', [BlogCategoryController::class, 'getTranslation'])
-                    ->name('blog-category.get_translation');
+                        Route::get('/get_translation', [BlogCategoryController::class, 'getTranslation'])
+                            ->name('blog-category.get_translation');
 
-                Route::post('blog-category/translation', [BlogCategoryController::class, 'setTranslation'])
-                    ->name('blog-category.translation');
+                        Route::post('/translation', [BlogCategoryController::class, 'setTranslation'])
+                            ->name('blog-category.translation');
+                    });
 
                 // Blog Routes
-                Route::resource('blog', BlogController::class);
+                Route::prefix('blog')
+                    ->group(function () {
+                        Route::resource('/', BlogController::class)
+                            ->except(['show']);
 
-                Route::delete('blog/delete/{id}', [BlogController::class, 'forceDelete'])
-                    ->name('blog.force.delete');
+                        Route::delete('/delete/{id}', [BlogController::class, 'forceDelete'])
+                            ->name('blog.force.delete');
 
-                Route::get('blog/get_translation', [BlogController::class, 'getTranslation'])
-                    ->name('blog.get_translation');
+                        Route::get('/get_translation', [BlogController::class, 'getTranslation'])
+                            ->name('blog.get_translation');
 
-                Route::post('blog/translation', [BlogController::class, 'setTranslation'])
-                    ->name('blog.translation');
+                        Route::post('/translation', [BlogController::class, 'setTranslation'])
+                            ->name('blog.translation');
+                    });
             });
     });
