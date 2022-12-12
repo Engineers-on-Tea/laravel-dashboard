@@ -18,18 +18,14 @@ use JetBrains\PhpStorm\NoReturn;
 class DashboardController extends Controller
 {
     protected array $columns = [];
-
     protected mixed $model = null;
     protected mixed $dataModel = null;
     protected mixed $parentModel = null;
     protected mixed $parentDataModel = null;
-
     protected bool $allow_edit;
     protected string $route;
-
     protected array $config;
-
-    public function __construct()
+    #[NoReturn] public function __construct()
     {
         if (isset($this->config)) {
             $this->model = $this->config['baseModel'];

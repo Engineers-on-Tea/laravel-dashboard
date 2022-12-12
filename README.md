@@ -1,64 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## About Laravel Dashboard
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel Dashboard is a free admin dashboard template built with adminty template. It is a fully responsive bootstrap admin template built with Bootstrap 4 Framework, HTML5, CSS and JQuery. It has a huge collection of reusable UI components and integrated with latest jQuery plugins. It can be used for all type of web applications like custom admin panel, project management system, admin dashboard, application backend, CMS, CRM, business website, corporate, portfolio, blog, etc.
 
-## About Laravel
+### More info will be added soon.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+> This is still work in progress and subject to change.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Main Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Fully Responsive
+- Built with Bootstrap 4
+- Blade Template
+- Authentication
+- Spatie Permission
+- RTL Support
+- Configurable Sidebar
+- Configurable CRUD controllers, models with a simple array!
 
-## Learning Laravel
+### How to configure for anything
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```php
+use App\Bll\Constants;
+use App\Modules\Country\Models\Country;
+use App\Modules\Country\Models\CountryData;
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+return [
+    'baseModel' => Country::query(),
+    'dataModel' => CountryData::query(),
+    'allow_edit' => true,
+    'base_route' => route('dashboard.country.index'),
+    'route' => 'country',
+    'title' => _i('Countries'),
+    'createTitle' => _i('Create Country'),
+    'editTitle' => _i('Edit Country'),
+    'uploads' => Constants::CountryPath,
+    'columns' => [
+        [
+            'name' => 'id',
+            'type' => 'hidden',
+            'model' => 'base',
+            'label' => _i('ID'),
+            'editable' => false,
+            'searchable' => false,
+            'sortable' => true,
+            'showInForm' => true,
+            'required' => true,
+        ],
+        [
+            'name' => 'title',
+            'type' => 'text',
+            'model' => 'data',
+            'label' => _i('Title'),
+            'editable' => true,
+            'searchable' => true,
+            'sortable' => true,
+            'placeholder' => _i('Country Title'),
+            'required' => true,
+            'showInForm' => true,
+        ],
+        [
+            'name' => 'dialing_code',
+            'type' => 'text',
+            'model' => 'base',
+            'label' => _i('Phone Code'),
+            'editable' => true,
+            'searchable' => true,
+            'sortable' => true,
+            'placeholder' => _i('Country Phone Code'),
+            'required' => true,
+            'showInForm' => true,
+        ],
+        [
+            'name' => 'status',
+            'type' => 'checkbox',
+            'model' => 'base',
+            'label' => _i('Status'),
+            'editable' => true,
+            'searchable' => true,
+            'sortable' => true,
+            'required' => true,
+            'showInForm' => true,
+        ],
+        [
+            'name' => 'created_at',
+            'type' => 'text',
+            'model' => 'base',
+            'label' => _i('Created At'),
+            'editable' => false,
+            'searchable' => false,
+            'sortable' => true,
+            'showInForm' => false,
+        ],
+        [
+            'name' => 'action',
+            'type' => 'action',
+            'model' => 'action',
+            'label' => _i('Options'),
+            'editable' => false,
+            'searchable' => false,
+            'sortable' => false,
+            'data' => [
+                'edit' => 'admin.components.buttons.edit',
+                'delete' => 'admin.components.buttons.delete',
+            ],
+            'showInForm' => false,
+        ]
+    ],
+    'validation' => [
+        'rules' => [
+            'title' => 'required|string|max:255|min:3',
+            'code' => 'required|string|max:10|min:2|unique:countries,code',
+            'dialing_code' => 'required|string|max:10|min:2|unique:countries,dialing_code',
+            'lang_id' => 'required|integer',
+        ],
+        'messages' => [
+            'title.required' => _i('Title is required'),
+            'code.required' => _i('Code is required'),
+            'code.unique' => _i('Code is already exists'),
+            'dialing_code.required' => _i('Dialing code is required'),
+            'dialing_code.unique' => _i('Dialing code is already exists'),
+        ]
+    ]
+];
+```
 
-## Laravel Sponsors
+The above configuration is for the country module, you can configure any module with the same configuration, you just create your controller and have it extend the `App\Modules\Admin\Controllers\DashboardController` and your models to extend the `App\Models\BaseModel` and you are good to go.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Create a `config.php` file in your module folder and add the above configuration.
 
-### Premium Partners
+You'll have your controller like this
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```php
+class CountryController extends DashboardController
+{
+    #[NoReturn] public function __construct()
+    {
+        $this->config = require_once(app_path('Modules/Country/config.php'));
+        parent::__construct();
+    }
+}
+```
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+All the crud logic is already written in the `DashboardController` so you don't have to write anything, just extend the `DashboardController` and you are good to go.
