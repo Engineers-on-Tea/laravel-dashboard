@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
-use Anubixo\LaravelGettext\Facades\LaravelGettext;
 
 class SetLocale
 {
@@ -24,19 +23,17 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
-        $segments = $request->segments();
-        $segment = $segments[0];
-        $supportedLocales = config('laravel-gettext.supported-locales');
-        if ($segment && in_array($segment, $supportedLocales)) {
-            $code = $segment;
-        } else {
-            $code = Lang::getAdminLangCode();
-        }
+        // $segments = $request->segments();
+        // $segment = $segments[0];
+        // $supportedLocales = config('laravel-gettext.supported-locales');
+        // if ($segment && in_array($segment, $supportedLocales)) {
+        //     $code = $segment;
+        // } else {
+        //     $code = Lang::getAdminLangCode();
+        // }
 
-        App::setLocale($code);
-
-        LaravelGettext::setLocale($code);
-        Session::put('locale', $code);
+        // App::setLocale($code);
+        // Session::put('locale', $code);
 
         return $next($request);
     }

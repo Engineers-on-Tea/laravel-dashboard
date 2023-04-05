@@ -30,16 +30,16 @@ return [
     'allow_edit' => true,
     'base_route' => route('dashboard.country.index'),
     'route' => 'country',
-    'title' => _i('Countries'),
-    'createTitle' => _i('Create Country'),
-    'editTitle' => _i('Edit Country'),
+    'title' => ('Countries'),
+    'createTitle' => ('Create Country'),
+    'editTitle' => ('Edit Country'),
     'uploads' => Constants::CountryPath,
     'columns' => [
         [
             'name' => 'id',
             'type' => 'hidden',
             'model' => 'base',
-            'label' => _i('ID'),
+            'label' => ('ID'),
             'editable' => false,
             'searchable' => false,
             'sortable' => true,
@@ -50,11 +50,11 @@ return [
             'name' => 'title',
             'type' => 'text',
             'model' => 'data',
-            'label' => _i('Title'),
+            'label' => ('Title'),
             'editable' => true,
             'searchable' => true,
             'sortable' => true,
-            'placeholder' => _i('Country Title'),
+            'placeholder' => ('Country Title'),
             'required' => true,
             'showInForm' => true,
         ],
@@ -62,11 +62,11 @@ return [
             'name' => 'dialing_code',
             'type' => 'text',
             'model' => 'base',
-            'label' => _i('Phone Code'),
+            'label' => ('Phone Code'),
             'editable' => true,
             'searchable' => true,
             'sortable' => true,
-            'placeholder' => _i('Country Phone Code'),
+            'placeholder' => ('Country Phone Code'),
             'required' => true,
             'showInForm' => true,
         ],
@@ -74,7 +74,7 @@ return [
             'name' => 'status',
             'type' => 'checkbox',
             'model' => 'base',
-            'label' => _i('Status'),
+            'label' => ('Status'),
             'editable' => true,
             'searchable' => true,
             'sortable' => true,
@@ -85,7 +85,7 @@ return [
             'name' => 'created_at',
             'type' => 'text',
             'model' => 'base',
-            'label' => _i('Created At'),
+            'label' => ('Created At'),
             'editable' => false,
             'searchable' => false,
             'sortable' => true,
@@ -95,7 +95,7 @@ return [
             'name' => 'action',
             'type' => 'action',
             'model' => 'action',
-            'label' => _i('Options'),
+            'label' => ('Options'),
             'editable' => false,
             'searchable' => false,
             'sortable' => false,
@@ -114,11 +114,11 @@ return [
             'lang_id' => 'required|integer',
         ],
         'messages' => [
-            'title.required' => _i('Title is required'),
-            'code.required' => _i('Code is required'),
-            'code.unique' => _i('Code is already exists'),
-            'dialing_code.required' => _i('Dialing code is required'),
-            'dialing_code.unique' => _i('Dialing code is already exists'),
+            'title.required' => ('Title is required'),
+            'code.required' => ('Code is required'),
+            'code.unique' => ('Code is already exists'),
+            'dialing_code.required' => ('Dialing code is required'),
+            'dialing_code.unique' => ('Dialing code is already exists'),
         ]
     ]
 ];
@@ -133,7 +133,7 @@ You'll have your controller like this
 ```php
 class CountryController extends DashboardController
 {
-    #[NoReturn] public function __construct()
+    public function __construct()
     {
         $this->config = require_once(app_path('Modules/Country/config.php'));
         parent::__construct();

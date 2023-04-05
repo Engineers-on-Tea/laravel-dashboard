@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', _i('Home'))
+@section('title', ('Home'))
 
 {{-- TODO: Partial Layout --}}
 @section('contents')

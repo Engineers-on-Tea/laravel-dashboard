@@ -5,16 +5,16 @@ use App\Modules\Home\Models\User;
 
 return [
     'allow_edit' => true,
-    'title' => _i('Users'),
+    'title' => ('Users'),
     'route' => 'user',
     'base_route' => route('dashboard.user.index'),
-    'createTitle' => _i('Create User'),
-    'editTitle' => _i('Edit User'),
+    'createTitle' => ('Create User'),
+    'editTitle' => ('Edit User'),
     'baseModel' => User::query(),
     'uploads' => Constants::UserPath,
     'columns' => [
         [
-            'label' => _i('ID'),
+            'label' => ('ID'),
             'name' => 'id',
             'type' => 'hidden',
             'searchable' => true,
@@ -25,7 +25,7 @@ return [
             'showInForm' => false,
         ],
         [
-            'label' => _i('Name'),
+            'label' => ('Name'),
             'name' => 'name',
             'type' => 'text',
             'searchable' => true,
@@ -34,10 +34,10 @@ return [
             'model' => 'base',
             'showInForm' => true,
             'required' => true,
-            'placeholder' => _i('Name'),
+            'placeholder' => ('Name'),
         ],
         [
-            'label' => _i('Email'),
+            'label' => ('Email'),
             'name' => 'email',
             'type' => 'email',
             'searchable' => true,
@@ -46,10 +46,10 @@ return [
             'model' => 'base',
             'showInForm' => true,
             'required' => true,
-            'placeholder' => _i('Email'),
+            'placeholder' => ('Email'),
         ],
         [
-            'label' => _i('Status'),
+            'label' => ('Status'),
             'name' => 'active',
             'type' => 'checkbox',
             'searchable' => true,
@@ -60,7 +60,7 @@ return [
             'required' => true,
         ],
         [
-            'label' => _i('Created At'),
+            'label' => ('Created At'),
             'name' => 'created_at',
             'type' => 'text',
             'searchable' => true,
@@ -73,7 +73,7 @@ return [
             'name' => 'action',
             'type' => 'action',
             'model' => 'action',
-            'label' => _i('Options'),
+            'label' => ('Options'),
             'editable' => false,
             'searchable' => false,
             'sortable' => false,

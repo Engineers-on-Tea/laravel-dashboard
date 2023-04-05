@@ -2,36 +2,36 @@
 
 return [
     'dashboard' => [
-        'label' => _i('Dashboard'),
+        'label' => ('Dashboard'),
         'icon' => 'icofont-ui-home',
         'route' => route('dashboard.home'),
         'children' => [],
     ],
     'settings' => [
-        'label' => _i('Main Settings'),
+        'label' => ('Main Settings'),
         'icon' => 'icofont-ui-settings',
         'route' => 'javascript:void(0)',
         'children' => [
             'user' => [
-                'label' => _i('Users'),
+                'label' => ('Users'),
                 'icon' => 'icon-user',
                 'route' => route('dashboard.user.index'),
                 'children' => [],
             ],
             'language' => [
-                'label' => _i('Languages'),
+                'label' => ('Languages'),
                 'icon' => 'icon-flag',
                 'route' => route('dashboard.language.index'),
                 'children' => [],
             ],
             'country' => [
-                'label' => _i('Countries'),
+                'label' => ('Countries'),
                 'icon' => 'icon-flag',
                 'route' => route('dashboard.country.index'),
                 'children' => [],
             ],
             'city' => [
-                'label' => _i('Cities'),
+                'label' => ('Cities'),
                 'icon' => 'icon-flag',
                 'route' => route('dashboard.city.index'),
                 'children' => [],
@@ -39,18 +39,18 @@ return [
         ]
     ],
     'blog' => [
-        'label' => _i('Blog'),
+        'label' => ('Blog'),
         'icon' => 'icofont-file-text',
         'route' => 'javascript:void(0)',
         'children' => [
             'blog-category' => [
-                'label' => _i('Blog Categories'),
+                'label' => ('Blog Categories'),
                 'icon' => 'icon-book',
                 'route' => route('dashboard.blog-category.index'),
                 'children' => [],
             ],
             'blog' => [
-                'label' => _i('Blogs'),
+                'label' => ('Blogs'),
                 'icon' => 'icon-align-justify',
                 'route' => route('dashboard.blog.index'),
                 'children' => [],

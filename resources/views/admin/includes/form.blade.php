@@ -84,7 +84,7 @@
     @endforeach
     <div class="form-group row d-flex justify-content-center">
         <div class="col-sm-4 my-1">
-            <button type="submit" class="btn btn-primary form-control">{{ _i('Save') }}</button>
+            <button type="submit" class="btn btn-primary form-control">{{ ('Save') }}</button>
         </div>
     </div>
 </form>

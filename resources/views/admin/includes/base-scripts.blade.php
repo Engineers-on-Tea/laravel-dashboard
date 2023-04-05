@@ -28,12 +28,12 @@
     function swalSuccess(title, message, icon = 'success', timer = null, onClose = null) {
         console.log(onClose);
         Swal.fire({
-            title: title ? title : "{{ _i('Successful') }}",
+            title: title ? title : "{{ ('Successful') }}",
             text: message,
             icon: icon,
             timer: timer,
             showConfirmButton: true,
-            confirmButtonText: "{{ _i('Ok') }}",
+            confirmButtonText: "{{ ('Ok') }}",
         }).then((result) => {
             if (onClose != null) {
                 onClose();
@@ -43,25 +43,25 @@
 
     function swalError(title, message, icon = 'error') {
         Swal.fire({
-            title: title ? title : "{{ _i('Error') }}",
+            title: title ? title : "{{ ('Error') }}",
             text: message,
             icon: icon,
             showConfirmButton: true,
-            confirmButtonText: "{{ _i('Ok') }}",
+            confirmButtonText: "{{ ('Ok') }}",
         });
     }
 
-    function swalOptions(title = "{{ _i('Caution') }}", message, buttons = {}, icon = 'info') {
+    function swalOptions(title = "{{ ('Caution') }}", message, buttons = {}, icon = 'info') {
         console.log(buttons);
         Swal.fire({
             title: title,
             text: message,
             icon: icon,
             showCancelButton: buttons.cancel ? buttons.cancel.showCancelButton : false,
-            cancelButtonText: buttons.cancel ? buttons.cancel.cancelButtonText : "{{ _i('Cancel') }}",
+            cancelButtonText: buttons.cancel ? buttons.cancel.cancelButtonText : "{{ ('Cancel') }}",
             cancelButtonColor: buttons.cancel ? buttons.cancel.cancelButtonColor : '#d33',
             showConfirmButton: buttons.confirm ? buttons.confirm.showConfirmButton : false,
-            confirmButtonText: buttons.confirm ? buttons.confirm.confirmButtonText : "{{ _i('Yes') }}",
+            confirmButtonText: buttons.confirm ? buttons.confirm.confirmButtonText : "{{ ('Yes') }}",
             confirmButtonColor: buttons.confirm ? buttons.confirm.confirmButtonColor : '#3085d6',
         }).then((result) => {
             if (result.isConfirmed) {
@@ -98,7 +98,7 @@
                     let buttons = {
                         'confirm': {
                             'showConfirmButton': true,
-                            'confirmButtonText': "{{ _i('Ok') }}",
+                            'confirmButtonText': "{{ ('Ok') }}",
                             'confirmButtonColor': '#3085d6',
                             'callback': logOut(url),
                         }

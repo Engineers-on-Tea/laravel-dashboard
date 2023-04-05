@@ -15,11 +15,11 @@
         }
 
         function onSave() {
-            swalSuccess("{{ _i('Success') }}", "{{ _i('Data saved successfully') }}", 'success', null, goBack);
+            swalSuccess("{{ ('Success') }}", "{{ ('Data saved successfully') }}", 'success', null, goBack);
         }
 
         function onSaveError() {
-            swalError("{{ _i('Error') }}", "{{ _i('An error occurred while saving data') }}");
+            swalError("{{ ('Error') }}", "{{ ('An error occurred while saving data') }}");
         }
     </script>
 @endpush

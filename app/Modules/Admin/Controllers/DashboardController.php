@@ -24,19 +24,19 @@ class DashboardController extends Controller
     protected mixed $parentDataModel = null;
     protected bool $allow_edit;
     protected string $route;
-    protected array $config;
-    #[NoReturn] public function __construct()
+    protected $config;
+    public function __construct()
     {
-        if (isset($this->config)) {
-            $this->model = $this->config['baseModel'];
-            if (isset($this->config['dataModel'])) {
-                $this->dataModel = $this->config['dataModel'];
-            }
-            $this->columns = $this->config['columns'];
+        // if (isset($this->config)) {
+        //     $this->model = $this->config['baseModel'];
+        //     if (isset($this->config['dataModel'])) {
+        //         $this->dataModel = $this->config['dataModel'];
+        //     }
+        //     $this->columns = $this->config['columns'];
 
-            $this->allow_edit = $this->config['allow_edit'];
-            $this->route = $this->config['route'];
-        }
+        //     $this->allow_edit = $this->config['allow_edit'];
+        //     $this->route = $this->config['route'];
+        // }
     }
 
     protected function home(): Factory|View|Application
@@ -159,8 +159,8 @@ class DashboardController extends Controller
         }
 
         $response = [
-            'title' => _i('Success'),
-            'message' => _i('New record created successfully'),
+            'title' => ('Success'),
+            'message' => ('New record created successfully'),
             'fail' => false,
         ];
 
@@ -249,8 +249,8 @@ class DashboardController extends Controller
         ], $request->only($dataColumns));
 
         $response = [
-            'title' => _i('Success'),
-            'message' => _i('Record updated successfully'),
+            'title' => ('Success'),
+            'message' => ('Record updated successfully'),
             'fail' => false,
         ];
 
@@ -265,8 +265,8 @@ class DashboardController extends Controller
     {
         $statusCode = 200;
         $response = [
-            'title' => _i('Success'),
-            'message' => _i('Deleted Successfully'),
+            'title' => ('Success'),
+            'message' => ('Deleted Successfully'),
             'fail' => false,
         ];
         try {
@@ -274,8 +274,8 @@ class DashboardController extends Controller
         } catch (Exception $e) {
             $statusCode = 500;
             $response = [
-                'title' => _i('Error'),
-                'message' => _i('Error Deleting') . ' ' . $e->getMessage(),
+                'title' => ('Error'),
+                'message' => ('Error Deleting') . ' ' . $e->getMessage(),
                 'fail' => true,
             ];
         }
@@ -291,7 +291,7 @@ class DashboardController extends Controller
     {
         $statusCode = 200;
         $response = [
-            'message' => _i('Restored Successfully'),
+            'message' => ('Restored Successfully'),
             'fail' => false,
         ];
         try {
@@ -299,7 +299,7 @@ class DashboardController extends Controller
         } catch (Exception $e) {
             $statusCode = 500;
             $response = [
-                'message' => _i('Error Restoring') . ' ' . $e->getMessage(),
+                'message' => ('Error Restoring') . ' ' . $e->getMessage(),
                 'fail' => true,
             ];
         }
@@ -315,7 +315,7 @@ class DashboardController extends Controller
     {
         $statusCode = 200;
         $response = [
-            'message' => _i('Deleted Successfully'),
+            'message' => ('Deleted Successfully'),
             'fail' => false,
         ];
         try {
@@ -323,7 +323,7 @@ class DashboardController extends Controller
         } catch (Exception $e) {
             $statusCode = 500;
             $response = [
-                'message' => _i('Error Deleting') . ' ' . $e->getMessage(),
+                'message' => ('Error Deleting') . ' ' . $e->getMessage(),
                 'fail' => true,
             ];
         }
@@ -368,7 +368,7 @@ class DashboardController extends Controller
             $this->dataModel->create($request->all());
         }
 
-        return response()->json(['message' => _i('Translation saved successfully')]);
+        return response()->json(['message' => ('Translation saved successfully')]);
     }
 
     /**
@@ -414,7 +414,7 @@ class DashboardController extends Controller
             }
 
             $response = [
-                'title' => _i('Error'),
+                'title' => ('Error'),
                 'message' => $errors,
             ];
 

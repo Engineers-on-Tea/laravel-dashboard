@@ -54,7 +54,7 @@
                 let buttons = {
                     'confirm': {
                         'showConfirmButton': true,
-                        'confirmButtonText': "{{ _i('Yes, delete it!') }}",
+                        'confirmButtonText': "{{ ('Yes, delete it!') }}",
                         'confirmButtonColor': '#f27474',
                         'callback': deleteCallback,
                         'params': {
@@ -67,14 +67,14 @@
                     },
                     'cancel': {
                         'showCancelButton': true,
-                        'cancelButtonText': "{{ _i('Cancel') }}",
+                        'cancelButtonText': "{{ ('Cancel') }}",
                         'cancelButtonColor': '#3085d6',
                         'callback': null
                     }
                 };
 
-                let message = "{{ _i('Are you sure you want to delete this item?') }}";
-                let title = "{{ _i('Delete') }}";
+                let message = "{{ ('Are you sure you want to delete this item?') }}";
+                let title = "{{ ('Delete') }}";
                 let icon = 'question';
 
                 swalOptions(title, message, buttons, icon);

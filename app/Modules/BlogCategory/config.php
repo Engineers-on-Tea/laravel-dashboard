@@ -7,13 +7,13 @@ return [
     'base_route' => route('dashboard.blog-category.index'),
     'route' => 'blog-category',
     'form' => 'admin.components.blog-category.form',
-    'title' => _i('Blog Categories'),
-    'createTitle' => _i('Create Blog Category'),
-    'editTitle' => _i('Edit Blog Category'),
+    'title' => ('Blog Categories'),
+    'createTitle' => ('Create Blog Category'),
+    'editTitle' => ('Edit Blog Category'),
     'uploads' => \App\Bll\Constants::BlogCategoryPath,
     'columns' => [
         'id' => [
-            'label' => _i('ID'),
+            'label' => ('ID'),
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
@@ -21,7 +21,7 @@ return [
             'model' => 'base',
         ],
         'image' => [
-            'label' => _i('Image'),
+            'label' => ('Image'),
             'type' => 'image',
             'searchable' => false,
             'sortable' => false,
@@ -29,7 +29,7 @@ return [
             'model' => 'base',
         ],
         'slug' => [
-            'label' => _i('Slug'),
+            'label' => ('Slug'),
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
@@ -37,7 +37,7 @@ return [
             'model' => 'base',
         ],
         'title' => [
-            'label' => _i('Title'),
+            'label' => ('Title'),
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
@@ -45,7 +45,7 @@ return [
             'model' => 'data',
         ],
         'description' => [
-            'label' => _i('Description'),
+            'label' => ('Description'),
             'type' => 'description',
             'searchable' => true,
             'sortable' => true,
@@ -53,7 +53,7 @@ return [
             'model' => 'data',
         ],
         'created_at' => [
-            'label' => _i('Created At'),
+            'label' => ('Created At'),
             'type' => 'text',
             'searchable' => true,
             'sortable' => true,
@@ -61,7 +61,7 @@ return [
             'model' => 'base',
         ],
         'action' => [
-            'label' => _i('Options'),
+            'label' => ('Options'),
             'type' => 'action',
             'searchable' => false,
             'sortable' => false,
@@ -81,10 +81,10 @@ return [
             'lang_id' => 'required|integer',
         ],
         'messages' => [
-            'title.required' => _i('Title is required'),
-            'description.required' => _i('Description is required'),
-            'image.required' => _i('Image is required'),
-            'image.image' => _i('Image is not valid'),
+            'title.required' => ('Title is required'),
+            'description.required' => ('Description is required'),
+            'image.required' => ('Image is required'),
+            'image.image' => ('Image is not valid'),
         ]
     ]
 ];

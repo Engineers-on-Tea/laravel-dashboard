@@ -5,13 +5,13 @@ use App\Modules\Admin\Models\Language;
 
 return [
     'allow_edit' => false,
-    'title' => _i('Languages'),
+    'title' => ('Languages'),
     'route' => 'language',
     'baseModel' => Language::query(),
     'uploads' => Constants::LanguagePath,
     'columns' => [
         [
-            'label' => _i('ID'),
+            'label' => ('ID'),
             'name' => 'id',
             'type' => 'text',
             'searchable' => true,
@@ -20,7 +20,7 @@ return [
             'model' => 'base',
         ],
         [
-            'label' => _i('Title'),
+            'label' => ('Title'),
             'name' => 'title',
             'type' => 'text',
             'searchable' => true,
@@ -29,7 +29,7 @@ return [
             'model' => 'base',
         ],
         [
-            'label' => _i('Code'),
+            'label' => ('Code'),
             'name' => 'code',
             'type' => 'text',
             'searchable' => true,
@@ -38,7 +38,7 @@ return [
             'model' => 'base',
         ],
         [
-            'label' => _i('Default'),
+            'label' => ('Default'),
             'name' => 'is_default',
             'type' => 'text',
             'searchable' => true,
@@ -47,7 +47,7 @@ return [
             'model' => 'base',
         ],
         [
-            'label' => _i('Created At'),
+            'label' => ('Created At'),
             'name' => 'created_at',
             'type' => 'text',
             'searchable' => true,

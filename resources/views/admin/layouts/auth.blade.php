@@ -5,7 +5,7 @@
     $settings = Utility::getDefaultSettings();
 @endphp
 <head>
-    <title>{{ _i('Login') }} | {{ $settings['title'] }}</title>
+    <title>{{ ('Login') }} | {{ $settings['title'] }}</title>
     @include('admin.layouts.meta')
     @include('admin.layouts.styles')
     @stack('css')

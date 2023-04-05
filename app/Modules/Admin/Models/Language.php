@@ -15,6 +15,6 @@ class Language extends BaseModel
 
     public function getIsDefaultAttribute($value)
     {
-        return $value == 1 ? _i('Default') : _i('Not Default');
+        return $value == 1 ? ('Default') : ('Not Default');
     }
 }

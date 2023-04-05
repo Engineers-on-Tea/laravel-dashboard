@@ -21,7 +21,7 @@ class AuthController extends Controller
 
     protected function showLoginForm(): Factory|View|Application
     {
-        $pageTitle = _i('Dashboard');
+        $pageTitle = ('Dashboard');
         return view('admin.login', [
             'pageTitle' => $pageTitle,
         ]);
@@ -54,16 +54,16 @@ class AuthController extends Controller
             return response()->json([
                 'fail' => true,
                 'url' => route('dashboard.login.show'),
-                'title' => _i('Error'),
-                'message' => _i('Session Expired'),
+                'title' => ('Error'),
+                'message' => ('Session Expired'),
             ]);
         }
 
         return response()->json([
             'fail' => false,
             'url' => route('dashboard.login.show'),
-            'title' => _i('Success'),
-            'message' => _i('Logged out successfully'),
+            'title' => ('Success'),
+            'message' => ('Logged out successfully'),
         ]);
     }
 }

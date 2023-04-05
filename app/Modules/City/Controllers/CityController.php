@@ -7,7 +7,7 @@ use JetBrains\PhpStorm\NoReturn;
 
 class CityController extends DashboardController
 {
-    #[NoReturn] public function __construct()
+    public function __construct()
     {
         $this->config = require_once(app_path('Modules/City/config.php'));
         $this->parentModel = $this->config['parentModel'];

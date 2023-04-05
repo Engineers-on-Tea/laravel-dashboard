@@ -14,7 +14,7 @@
             <div class="card-block">
                 <div class="row m-b-20">
                     <div class="col-md-12">
-                        <h3 class="text-center">{{_i('Sign in')}}</h3>
+                        <h3 class="text-center">{{('Sign in')}}</h3>
                     </div>
                 </div>
                 <div class="form-group form-primary">
@@ -31,7 +31,7 @@
                             <label>
                                 <input type="checkbox" value="" name="remember">
                                 <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                <span class="text-inverse">{{_i('Remember me')}}</span>
+                                <span class="text-inverse">{{('Remember me')}}</span>
                             </label>
                         </div>
                     </div>
@@ -40,15 +40,15 @@
                     <div class="col-md-12">
                         <button type="submit"
                                 class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">
-                            {{_i('Sign in')}}
+                            {{('Sign in')}}
                         </button>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
                     <div class="col-md-10">
-                        <p class="text-inverse text-left m-b-0">{{_i('Thank you')}}.</p>
-                        <p class="text-inverse text-left"><a href="{{ route('home') }}"><b class="f-w-600">{{_i('Back to website')}}</b></a>
+                        <p class="text-inverse text-left m-b-0">{{('Thank you')}}.</p>
+                        <p class="text-inverse text-left"><a href="{{ route('home') }}"><b class="f-w-600">{{('Back to website')}}</b></a>
                         </p>
                     </div>
                     <div class="col-md-2">

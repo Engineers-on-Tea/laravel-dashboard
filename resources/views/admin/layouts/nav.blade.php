@@ -1,6 +1,6 @@
 <nav class="pcoded-navbar">
     <div class="pcoded-inner-navbar main-menu">
-        <div class="pcoded-navigatio-lavel">{{ _i('Navigation') }}</div>
+        <div class="pcoded-navigatio-lavel">{{ ('Navigation') }}</div>
         <ul class="pcoded-item pcoded-left-item">
             @php
                 $nav = require_once resource_path('views/admin/includes/nav.php');

@@ -31,8 +31,8 @@
                         <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn"
                             data-dropdown-out="fadeOut">
                             <li>
-                                <h6>{{ _i('Notifications') }}</h6>
-                                <label class="label label-danger">{{ _i('New') }}</label>
+                                <h6>{{ ('Notifications') }}</h6>
+                                <label class="label label-danger">{{ ('New') }}</label>
                             </li>
                             <li>
                                 {{-- Notification Item --}}
@@ -41,8 +41,8 @@
                                         src="{{ asset('admin_dashboard/assets/images/avatar-4.jpg') }}"
                                         alt="Generic placeholder image">
                                     <div class="media-body">
-                                        <h5 class="notification-user">{{ _i('User name example') }}</h5>
-                                        <p class="notification-msg">{{ _i('Notification body example') }}</p>
+                                        <h5 class="notification-user">{{ ('User name example') }}</h5>
+                                        <p class="notification-msg">{{ ('Notification body example') }}</p>
                                         <span class="notification-time">30 minutes ago</span>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                         <ul class="dropdown-menu" data-dropdown-in="fadeIn"
                             data-dropdown-out="fadeOut">
                             <li>
-                                <h6>{{ _i('Languages') }}</h6>
+                                <h6>{{ ('Languages') }}</h6>
                             </li>
                             @foreach ($langs as $item)
                                 <li >
@@ -90,17 +90,17 @@
                             data-dropdown-out="fadeOut">
                             <li>
                                 <a href="#!">
-                                    <i class="icofont icofont-ui-settings"></i> {{ _i('Settings') }}
+                                    <i class="icofont icofont-ui-settings"></i> {{ ('Settings') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="user-profile.htm">
-                                    <i class="icofont icofont-ui-user"></i> {{ _i('Profile') }}
+                                    <i class="icofont icofont-ui-user"></i> {{ ('Profile') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('dashboard.logout') }}" data-button="logout">
-                                    <i class="icofont icofont-sign-out"></i> {{ _i('Logout') }}
+                                    <i class="icofont icofont-sign-out"></i> {{ ('Logout') }}
                                 </a>
                             </li>
                         </ul>
