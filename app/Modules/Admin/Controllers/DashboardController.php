@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Validator;
 class DashboardController extends Controller
 {
     protected array $columns = [];
-    protected $model = null;
-    protected $dataModel = null;
-    protected $parentModel = null;
-    protected $parentDataModel = null;
-    protected $allow_edit;
+    protected mixed $model = null;
+    protected mixed $dataModel = null;
+    protected mixed $parentModel = null;
+    protected mixed $parentDataModel = null;
+    protected bool $allow_edit;
     protected string $route;
-    protected $config;
+    protected array $config;
     public function __construct()
     {
         if (isset($this->config)) {

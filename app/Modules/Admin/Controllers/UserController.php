@@ -2,9 +2,6 @@
 
 namespace App\Modules\Admin\Controllers;
 
-
-use JetBrains\PhpStorm\NoReturn;
-
 class UserController extends DashboardController
 {
     public function __construct()

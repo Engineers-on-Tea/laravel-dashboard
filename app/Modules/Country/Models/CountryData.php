@@ -2,16 +2,13 @@
 
 namespace App\Modules\Country\Models;
 
-use App\Models\Language;
-use App\Modules\Country\Models\Country;
+use App\Modules\Admin\Models\Language;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CountryData extends Model
 {
-    use HasFactory;
     use SoftDeletes;
 
     protected $table = 'country_data';

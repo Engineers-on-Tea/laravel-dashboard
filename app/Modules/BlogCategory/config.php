@@ -1,8 +1,12 @@
 <?php
 
+use App\Bll\Constants;
+use App\Modules\BlogCategory\Models\BlogCategory;
+use App\Modules\BlogCategory\Models\BlogCategoryData;
+
 return [
-    'baseModel' => \App\Modules\BlogCategory\Models\BlogCategory::query(),
-    'dataModel' => \App\Modules\BlogCategory\Models\BlogCategoryData::query(),
+    'baseModel' => BlogCategory::query(),
+    'dataModel' => BlogCategoryData::query(),
     'allow_edit' => true,
     'base_route' => route('dashboard.blog-category.index'),
     'route' => 'blog-category',
@@ -10,7 +14,7 @@ return [
     'title' => ('Blog Categories'),
     'createTitle' => ('Create Blog Category'),
     'editTitle' => ('Edit Blog Category'),
-    'uploads' => \App\Bll\Constants::BlogCategoryPath,
+    'uploads' => Constants::BlogCategoryPath,
     'columns' => [
         'id' => [
             'label' => ('ID'),

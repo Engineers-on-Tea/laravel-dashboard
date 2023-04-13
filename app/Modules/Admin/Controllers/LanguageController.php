@@ -2,8 +2,6 @@
 
 namespace App\Modules\Admin\Controllers;
 
-use JetBrains\PhpStorm\NoReturn;
-
 class LanguageController extends DashboardController
 {
     protected $config;

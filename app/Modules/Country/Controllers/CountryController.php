@@ -3,7 +3,6 @@
 namespace App\Modules\Country\Controllers;
 
 use App\Modules\Admin\Controllers\DashboardController;
-use JetBrains\PhpStorm\NoReturn;
 
 class CountryController extends DashboardController
 {

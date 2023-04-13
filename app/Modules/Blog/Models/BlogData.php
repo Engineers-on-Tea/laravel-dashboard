@@ -3,13 +3,12 @@
 namespace App\Modules\Blog\Models;
 
 use App\Models\BaseModel;
+use App\Modules\Admin\Models\Language;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class BlogData extends BaseModel
 {
-    use HasFactory;
     use SoftDeletes;
 
     protected $table = 'blog_data';
