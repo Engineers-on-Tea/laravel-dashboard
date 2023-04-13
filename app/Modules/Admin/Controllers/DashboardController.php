@@ -13,30 +13,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Modules\Admin\Models\Language;
 use Illuminate\Support\Facades\Validator;
-use JetBrains\PhpStorm\NoReturn;
 
 class DashboardController extends Controller
 {
     protected array $columns = [];
-    protected mixed $model = null;
-    protected mixed $dataModel = null;
-    protected mixed $parentModel = null;
-    protected mixed $parentDataModel = null;
-    protected bool $allow_edit;
+    protected $model = null;
+    protected $dataModel = null;
+    protected $parentModel = null;
+    protected $parentDataModel = null;
+    protected $allow_edit;
     protected string $route;
     protected $config;
     public function __construct()
     {
-        // if (isset($this->config)) {
-        //     $this->model = $this->config['baseModel'];
-        //     if (isset($this->config['dataModel'])) {
-        //         $this->dataModel = $this->config['dataModel'];
-        //     }
-        //     $this->columns = $this->config['columns'];
+        if (isset($this->config)) {
+            $this->model = $this->config['baseModel'];
+            if (isset($this->config['dataModel'])) {
+                $this->dataModel = $this->config['dataModel'];
+            }
+            $this->columns = $this->config['columns'];
 
-        //     $this->allow_edit = $this->config['allow_edit'];
-        //     $this->route = $this->config['route'];
-        // }
+            $this->allow_edit = $this->config['allow_edit'];
+            $this->route = $this->config['route'];
+        }
     }
 
     protected function home(): Factory|View|Application

@@ -49,11 +49,10 @@ Route::name('dashboard.')
                 Route::resource('user', UserController::class);
 
                 // Country Routes
+                Route::resource('country', CountryController::class)
+                    ->except(['show']);
                 Route::prefix('country')
                     ->group(function () {
-                        Route::resource('/', CountryController::class)
-                            ->except(['show']);
-
                         Route::delete('/delete/{id}', [CountryController::class, 'forceDelete'])
                             ->name('country.force.delete');
 
@@ -65,11 +64,10 @@ Route::name('dashboard.')
                     });
 
                 // City Routes
+                Route::resource('city', CityController::class)
+                    ->except(['show']);
                 Route::prefix('city')
                     ->group(function () {
-                        Route::resource('/', CityController::class)
-                            ->except(['show']);
-
                         Route::delete('/delete/{id}', [CityController::class, 'forceDelete'])
                             ->name('city.force.delete');
 
@@ -81,11 +79,10 @@ Route::name('dashboard.')
                     });
 
                 // BlogCategory Routes
+                Route::resource('blog-category', BlogCategoryController::class)
+                    ->except(['show']);
                 Route::prefix('blog-category')
                     ->group(function () {
-                        Route::resource('/', BlogCategoryController::class)
-                            ->except(['show']);
-
                         Route::delete('/delete/{id}', [BlogCategoryController::class, 'forceDelete'])
                             ->name('blog-category.force.delete');
 
@@ -97,11 +94,10 @@ Route::name('dashboard.')
                     });
 
                 // Blog Routes
+                Route::resource('blog', BlogController::class)
+                    ->except(['show']);
                 Route::prefix('blog')
                     ->group(function () {
-                        Route::resource('/', BlogController::class)
-                            ->except(['show']);
-
                         Route::delete('/delete/{id}', [BlogController::class, 'forceDelete'])
                             ->name('blog.force.delete');
 
