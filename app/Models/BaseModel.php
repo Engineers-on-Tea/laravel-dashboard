@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Bll\Lang;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -29,6 +30,9 @@ class BaseModel extends Model
         return $this->hasMany(get_class($this) . 'Data', 'master_id', 'id');
     }
 
+    /**
+     * @throws Exception
+     */
     public function Translation(): HasOne
     {
         return $this->hasOne(get_class($this) . 'Data', 'master_id', 'id')
