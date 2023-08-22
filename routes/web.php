@@ -17,3 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 })
     ->name('home');
+
+Route::resource('user', 'App\Modules\User\UserController');
