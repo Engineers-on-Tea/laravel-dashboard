@@ -17,3 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 })
     ->name('home');
+
+Route::prefix('user')->group(function () {
+    Route::get('/', 'UserController@index')->name('user.index');
+    Route::get('create', 'UserController@create')->name('user.create');
+    Route::post('/', 'UserController@store')->name('user.store');
+    Route::get('{id}/edit', 'UserController@edit')->name('user.edit');
+    Route::put('{id}', 'UserController@update')->name('user.update');
+    Route::delete('{id}', 'UserController@destroy')->name('user.destroy');
+});
